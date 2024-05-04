@@ -1,0 +1,168 @@
+[0.061s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.061s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=20, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7270b382a860>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7270b382a290>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7270b382a290>>, mixin_verb=('build',))
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.152s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/zoellickhan/Code/2024CV/ws_testROS/src'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.152s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.159s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.159s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.159s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.159s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.159s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extensions ['ignore', 'ignore_ament_install']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extension 'ignore'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extension 'ignore_ament_install'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extensions ['colcon_pkg']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extension 'colcon_pkg'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extensions ['colcon_meta']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extension 'colcon_meta'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extensions ['ros']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(test_ch343) by extension 'ros'
+[0.162s] DEBUG:colcon.colcon_core.package_identification:Package 'test_ch343' with type 'ros.ament_cmake' and name 'test_ch343'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extensions ['ignore', 'ignore_ament_install']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extension 'ignore'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extension 'ignore_ament_install'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extensions ['colcon_pkg']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extension 'colcon_pkg'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extensions ['colcon_meta']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extension 'colcon_meta'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extensions ['ros']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(test_serialdriver) by extension 'ros'
+[0.162s] DEBUG:colcon.colcon_core.package_identification:Package 'test_serialdriver' with type 'ros.ament_cmake' and name 'test_serialdriver'
+[0.163s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.163s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.163s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.163s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.163s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.180s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.182s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 297 installed packages in /opt/ros/humble
+[0.183s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_args' from command line to 'None'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_target' from command line to 'None'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_clean_cache' from command line to 'False'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_clean_first' from command line to 'False'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'cmake_force_configure' from command line to 'False'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'ament_cmake_args' from command line to 'None'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'catkin_cmake_args' from command line to 'None'
+[0.207s] Level 5:colcon.colcon_core.verb:set package 'test_ch343' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.207s] DEBUG:colcon.colcon_core.verb:Building package 'test_ch343' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343', 'merge_install': False, 'path': '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343', 'symlink_install': False, 'test_result_base': None}
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_args' from command line to 'None'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_target' from command line to 'None'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_clean_first' from command line to 'False'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'cmake_force_configure' from command line to 'False'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'ament_cmake_args' from command line to 'None'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.208s] Level 5:colcon.colcon_core.verb:set package 'test_serialdriver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.208s] DEBUG:colcon.colcon_core.verb:Building package 'test_serialdriver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver', 'merge_install': False, 'path': '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver', 'symlink_install': False, 'test_result_base': None}
+[0.208s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.209s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.209s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343' with build type 'ament_cmake'
+[0.209s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343'
+[0.211s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.211s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.211s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.213s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver' with build type 'ament_cmake'
+[0.214s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver'
+[0.214s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.214s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.218s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[0.222s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver -- -j20 -l20
+[0.257s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver -- -j20 -l20
+[0.293s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver
+[0.308s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(test_serialdriver)
+[0.311s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_serialdriver
+[0.317s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver' for CMake module files
+[0.319s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver' for CMake config files
+[0.320s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_serialdriver', 'cmake_prefix_path')
+[0.320s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.ps1'
+[0.322s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.dsv'
+[0.323s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.sh'
+[0.325s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/bin'
+[0.325s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/lib/pkgconfig/test_serialdriver.pc'
+[0.326s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/lib/python3.10/site-packages'
+[0.326s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/bin'
+[0.327s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.ps1'
+[0.329s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.dsv'
+[0.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.sh'
+[0.333s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.bash'
+[0.335s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.zsh'
+[0.337s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/colcon-core/packages/test_serialdriver)
+[0.377s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(test_serialdriver)
+[0.378s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver' for CMake module files
+[0.379s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver' for CMake config files
+[0.379s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_serialdriver', 'cmake_prefix_path')
+[0.380s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.ps1'
+[0.381s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.dsv'
+[0.382s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/hook/cmake_prefix_path.sh'
+[0.383s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/bin'
+[0.383s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/lib/pkgconfig/test_serialdriver.pc'
+[0.384s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/lib/python3.10/site-packages'
+[0.384s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/bin'
+[0.385s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.ps1'
+[0.386s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.dsv'
+[0.387s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.sh'
+[0.388s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.bash'
+[0.389s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/test_serialdriver/package.zsh'
+[0.390s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_serialdriver/share/colcon-core/packages/test_serialdriver)
+[1.844s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[1.862s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(test_ch343)
+[1.862s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343' for CMake module files
+[1.863s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343' for CMake config files
+[1.863s] Level 1:colcon.colcon_core.shell:create_environment_hook('test_ch343', 'cmake_prefix_path')
+[1.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/hook/cmake_prefix_path.ps1'
+[1.864s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/hook/cmake_prefix_path.dsv'
+[1.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/hook/cmake_prefix_path.sh'
+[1.865s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib'
+[1.865s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/bin'
+[1.865s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/pkgconfig/test_ch343.pc'
+[1.866s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/python3.10/site-packages'
+[1.866s] Level 1:colcon.colcon_core.environment:checking '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/bin'
+[1.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.ps1'
+[1.867s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.dsv'
+[1.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.sh'
+[1.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.bash'
+[1.869s] INFO:colcon.colcon_core.shell:Creating package script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.zsh'
+[1.869s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/colcon-core/packages/test_ch343)
+[1.880s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.880s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.880s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[1.880s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.890s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.890s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.890s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.921s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.922s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/local_setup.ps1'
+[1.924s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/_local_setup_util_ps1.py'
+[1.926s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/setup.ps1'
+[1.928s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/local_setup.sh'
+[1.929s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/_local_setup_util_sh.py'
+[1.930s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/setup.sh'
+[1.932s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/local_setup.bash'
+[1.933s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/setup.bash'
+[1.935s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/local_setup.zsh'
+[1.936s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/zoellickhan/Code/2024CV/ws_testROS/src/install/setup.zsh'

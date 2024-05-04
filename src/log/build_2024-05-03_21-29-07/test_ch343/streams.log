@@ -1,0 +1,11 @@
+[0.016s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[0.070s] [ 50%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test.cpp.o[0m
+[0.174s] In file included from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test.cpp:3[m[K:
+[0.174s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.hpp:7:10:[m[K [01;31m[Kfatal error: [m[Kstd_msgs/msg/float64.hpp: No such file or directory
+[0.174s]     7 | #include [01;31m[K<std_msgs/msg/float64.hpp>[m[K
+[0.174s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.174s] compilation terminated.
+[0.177s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test.cpp.o] Error 1
+[0.177s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[0.177s] gmake: *** [Makefile:146: all] Error 2
+[0.179s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20

@@ -1,0 +1,4 @@
+Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343
+Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343

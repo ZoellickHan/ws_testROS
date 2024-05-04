@@ -1,0 +1,40 @@
+[0.007s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[0.033s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.054s] [ 33%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:44:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.384s]    44 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.384s]       |                       [01;35m[K^~~~~~~[m[K
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:61:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.384s]    61 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.384s]       |                       [01;35m[K^~~~~~~[m[K
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:175:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.384s]   175 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.384s]       |                       [01;35m[K^~~~~~~[m[K
+[0.384s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:192:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.384s]   192 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.384s]       |                       [01;35m[K^~~~~~~[m[K
+[0.454s] [ 66%] [32m[1mLinking CXX executable test_ch343[0m
+[0.595s] [100%] Built target test_ch343
+[0.606s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[0.628s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343
+[0.632s] -- Install configuration: ""
+[0.632s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+[0.632s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+[0.632s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+[0.632s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+[0.632s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/path.sh
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/path.dsv
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.bash
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.sh
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.zsh
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.dsv
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.dsv
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.xml
+[0.633s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/test_ch343/test_ch343
+[0.633s] -- Set runtime path of "/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/test_ch343/test_ch343" to ""
+[0.634s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343

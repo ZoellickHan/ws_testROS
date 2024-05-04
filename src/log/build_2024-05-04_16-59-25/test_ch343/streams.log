@@ -1,0 +1,36 @@
+[0.009s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20
+[0.064s] [ 33%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[0.065s] [ 66%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[0.423s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[0.423s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:70:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.423s]    70 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.423s]       |                       [01;35m[K^~~~~~~[m[K
+[0.423s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:87:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.423s]    87 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.424s]       |                       [01;35m[K^~~~~~~[m[K
+[0.424s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[0.424s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:201:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.424s]   201 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.424s]       |                       [01;35m[K^~~~~~~[m[K
+[0.424s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:218:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.424s]   218 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.424s]       |                       [01;35m[K^~~~~~~[m[K
+[1.388s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[1.388s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:18:10:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Ktime_t*[m[K’ {aka ‘[01m[Klong int*[m[K’} to ‘[01m[Kdouble[m[K’ in initialization
+[1.388s]    18 |     time([01;31m[K&timeptr[m[K);
+[1.388s]       |          [01;31m[K^~~~~~~~[m[K
+[1.388s]       |          [01;31m[K|[m[K
+[1.388s]       |          [01;31m[Ktime_t* {aka long int*}[m[K
+[1.388s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:34:20:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects argument of type ‘[01m[Kdouble[m[K’, but argument 2 has type ‘[01m[Klong int[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[1.389s]    34 |     printf("time: [01;35m[K%f[m[K, throuhtput: %f \n",[32m[Kperiod[m[K,throughput);
+[1.389s]       |                   [01;35m[K~^[m[K                     [32m[K~~~~~~[m[K
+[1.389s]       |                    [01;35m[K|[m[K                     [32m[K|[m[K
+[1.389s]       |                    [01;35m[Kdouble[m[K                [32m[Klong int[m[K
+[1.389s]       |                   [32m[K%ld[m[K
+[1.389s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:18:5:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ktime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[1.389s]    18 |     [01;35m[Ktime[m[K(&timeptr);
+[1.389s]       |     [01;35m[K^~~~[m[K
+[1.632s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test_read.cpp.o] Error 1
+[1.632s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[1.633s] gmake: *** [Makefile:146: all] Error 2
+[1.635s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/src/build/test_ch343 -- -j20 -l20

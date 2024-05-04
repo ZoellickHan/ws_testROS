@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable test_ch343[0m
+[100%] Built target test_ch343
+-- Install configuration: ""
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/path.sh
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/environment/path.dsv
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.bash
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.sh
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.zsh
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/local_setup.dsv
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.dsv
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/share/test_ch343/package.xml
+-- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/test_ch343/test_ch343
+-- Set runtime path of "/home/zoellickhan/Code/2024CV/ws_testROS/src/install/test_ch343/lib/test_ch343/test_ch343" to ""
