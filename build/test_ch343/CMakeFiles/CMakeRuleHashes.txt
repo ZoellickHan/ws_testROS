@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+34803a2ee803361afbe4c2dcef666b96 CMakeFiles/test_ch343_uninstall

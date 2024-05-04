@@ -45,7 +45,7 @@ void Port::test_receive()
 		if (RxBuff[a] != 0xff )
 		{
 			error_count++;
-			printf("error!!! ,%d \n  ",RxBuff[a]);
+			printf("error!!! the error is: %d \n  ",RxBuff[a]);
 		}
 	}
 }

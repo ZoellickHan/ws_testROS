@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     {
         port->test_receive();
         period = timeptr - last_time;
-        throughput = port->getNumRead()/period*10000;
+        if(period != 0) throughput = port->getNumRead()/period*10000;
     }   
 
     printf("time: %ld, throuhtput: %f \n",period,throughput);
