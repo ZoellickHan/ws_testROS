@@ -359,6 +359,22 @@ struct ActionCommand
     uint8_t crc_2;
 } __attribute__((packed));
 
+template <typename T>
+T fromTestVector(const std::vector<uint8_t> &data)
+{
+    T received_packet;
+    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
+    return received_packet;
+}
+
+template <typename T>
+std::vector<uint8_t> toTestVector(const T &data)
+{
+    std::vector<uint8_t> sent_packet(sizeof(T));
+    std::copy(reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(T), sent_packet.begin());
+    return sent_packet;
+}
+
 inline GimbalMsg fromVector(const std::vector<uint8_t> &data)
 {
     GimbalMsg received_packet;

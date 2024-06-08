@@ -1,4 +1,5 @@
 #include "newDriver.hpp"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -12,25 +13,24 @@
 #include <getopt.h>
 #include <linux/serial.h>
 
-#include "protocol.hpp" 
-
 #define termios asmtermios
 #include <asm/termios.h>
 #undef termios
 #include <termios.h>
 
-#if USE_CH343_DRIVER 
 namespace newSerialDriver
 {
+using namespace crc16;
 using namespace std;
-
+using namespace newSerialDriver;
+using namespace rm_serial_driver;
 extern "C" int ioctl(int d, int request, ...);
 
 Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 {	
 	config = ptr;
-	memset(TxBuff, 0x00, sizeof(TxBuff));
-	memset(RxBuff ,0x00, sizeof(RxBuff));
+	memset(TxBuff, 0x00, ROSCOMM_BUFFER_SIZE);
+	memset(RxBuff ,0x00, ROSCOMM_BUFFER_SIZE);
 }
 
 Port::~Port(){}
@@ -72,7 +72,7 @@ bool Port::setBaudRate()
 }
 
 /**
- * use this to init the port at first
+ * use this to init the port at first, then open
 */
 bool Port::init()
 {
@@ -238,31 +238,75 @@ int Port::openPort()
 	return fd;
 }
 
-void printHexValues(const std::vector<uint8_t>& vec) {
-    for (auto num : vec) {
-        printf("%02X ", num);
-    }
-    printf("\n");
-}
+// void printHexValues(const std::vector<uint8_t>& vec) {
+//     for (auto num : vec) {
+//         printf("%02X ", num);
+//     }
+//     printf("\n");
+// }
 
 /**
  *  Receive the data
 */
-int Port::receive(std::vector<uint8_t> & buff)
-{   
-    int num_per_read = 0 ;
-	int readIndex    = 0 ; 
-	int writeIndex	 = 0 ;
+template <typename T>
+int  Port::decode(std::vector<T> &userData)
+{	
+	T data;
+	transform.resize(sizeof(Header));
+	for(int i = putoutIndex; putoutIndex + sizeof(Header) <= putinIndex; i++ )
+	{
+		if(RxBuff[i] != 0xAA) continue;
+		putoutIndex = i;
 
-	num_per_read = read(fd,RxBuff+writeIndex,sizeof(RxBuff));
-	writeIndex += num_per_read;
+		if((putoutIndex + transform.size()) < putinIndex)
+			memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
+		else
+		{
+			memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
+			memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+		}
+			
+		header = fromHeaderVector(transform);
+		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
+
+		if(crc_ok_header)
+		{
+			transform.resize(sizeof(T));
+
+			if((putoutIndex + transform.size()) < putinIndex)
+				memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
+			else
+			{
+				memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
+				memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+			}
+		
+			data = fromTestVector(transform);
+			crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&data), sizeof(T));
+
+			if(crc_ok)
+			{
+				userData.emplace(data);
+				decodeCorrectNum ++;
+			} 
+		}
+
+		putoutIndex += sizeof(T);
+		putoutIndex = putoutIndex>ROSCOMM_BUFFER_SIZE ? putoutIndex%ROSCOMM_BUFFER_SIZE : putoutIndex;
+
+		i += sizeof(T);
+	}
+	return decodeCorrectNum;
+}
+
+int Port::receive()
+{   
+	num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
+
 	if(num_per_read > 0)
 	{		
-		// for(int i = 0;i<num_per_read;i++)
-		// {
-				// printf("receive: %d\n")
-		// }
-		// // printf("Not Boji \n");
+		putinIndex += num_per_read;
+		putinIndex = putinIndex > ROSCOMM_BUFFER_SIZE ? putinIndex%ROSCOMM_BUFFER_SIZE : putinIndex ;
     	return num_per_read;
 	}
 	else
@@ -333,4 +377,3 @@ bool Port::isPortOpen()
 }
 
 }//newSerialDriver
-#endif
