@@ -245,9 +245,10 @@ int Port::openPort()
 //     printf("\n");
 // }
 
-void Port::registerType(uint8_t typeIDArray[ID_NUM],int num)
+void Port::registerType(int typeIDArray[ID_NUM],int num)
 {
-	for(int i=0;i<ID_NUM;i++){
+	for(int i=0;i<ID_NUM;i++)
+	{
 		interestID[i] = typeIDArray[i];
 	}
 }
@@ -275,15 +276,14 @@ int  Port::decode()
 		header = fromHeaderVector(transform);
 		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
 
-		// if(crc_ok_header)	Classify();
+		
 		if(crc_ok_header)
 		{
 			for(int j : interestID)
 			{
 				switch (j)
 				{
-				case GIMBAL_MSG:
-					Classify()
+				case GIMBAL_MSG:					
 					break;
 				
 				case CHASSIS_MSG:
@@ -292,11 +292,15 @@ int  Port::decode()
 					break;
 				case FIELD_MSG:
 					break;
+
+
 				case TWOCRC_GIMBAL_MSG:
+					Classify(twoCRC_GimbalMsg);
 					break;
 				case TWOCRC_CHASSIS_MSG:
 					break;
 				case TWOCRC_SENTRY_GIMBAL_MSG:
+					Classify(twoCRC_SentryGimbalMsg);
 					break;
 				case TWOCRC_FIELD_MSG:
 					break;
@@ -315,9 +319,9 @@ int  Port::decode()
 }
 
 template <typename T>
-T Port::Classify(std::vector<T> &userData)
+void Port::Classify(T &data)
 {
-	T data;
+	T buffer;
 	transform.resize(sizeof(T));
 
 	if((putoutIndex + transform.size()) < putinIndex)
@@ -327,16 +331,14 @@ T Port::Classify(std::vector<T> &userData)
 		memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
 		memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
 	}
-	data = fromTestVector(transform);
+	buffer = fromTestVector<T>(transform);
 
-	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&data), sizeof(T));
+	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&buffer), sizeof(T));
 
 	if(crc_ok)
 	{
-		userData.emplace(data);
-		decodeCorrectNum ++;
+		memcpy(data,buffer,sizeof(buffer));
 	} 
-
 }
 
 int Port::receive()

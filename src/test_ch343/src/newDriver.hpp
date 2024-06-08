@@ -60,7 +60,6 @@ class Port
 public:
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
-    int getErrorCount(){return error_count;}
 
     bool init();
     int  openPort();
@@ -71,15 +70,18 @@ public:
     bool reopen();
     int  receive();
     int  transmit(std::vector<uint8_t> & buff);
-    void registerType(uint8_t typeIDArray[ID_NUM], int num);
+    void registerType(int typeIDArray[ID_NUM], int num);
+
     template <typename T>
     int decode();
 
     template <typename T> 
-    T Classify(std::vector<T> &userData);
+    void Classify(T& data);
 
     bool isPortInit();
     bool isPortOpen();
+    rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
+    rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
 
 private:
     std::shared_ptr<SerialConfig> config;
@@ -103,6 +105,9 @@ private:
 
     rm_serial_driver::Header header;
     std::vector<uint8_t> transform;
+
+    rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
+    rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
 
 };
 

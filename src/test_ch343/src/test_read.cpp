@@ -41,8 +41,12 @@ void printHexValues(const std::vector<uint8_t>& vec) {
     printf("\n");
 }
 
+
 int main(int argc, char **argv)
 {
+    rm_serial_driver::TwoCRC_GimbalMsg&  twoCRC_GimbalMsg = port->getTwoCRC_GimbalMsg();
+    rm_serial_driver::TwoCRC_SentryGimbalMsg& twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
+
     rclcpp::init(argc, argv);
     auto node = std::make_shared<rclcpp::Node>("testing");
     RCLCPP_INFO(node->get_logger(), "Start ch343 in node testing.");
@@ -55,8 +59,16 @@ int main(int argc, char **argv)
 
     while(true)
     {
+        int typing[ID_NUM];
+        memset(typing,0x00,ID_NUM);
+        typing[0] = TWOCRC_GIMBAL_MSG;
+        typing[1] = TWOCRC_SENTRY_GIMBAL_MSG;
+
+        port->registerType(typing,2);
         single = port->receive();
         
+        printf("two_gimbal 1: %f \n",twoCRC_GimbalMsg.bullet_speed);
+        printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.bullet_speed);
     }   
 
 

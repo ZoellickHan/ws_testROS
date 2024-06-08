@@ -1,0 +1,3 @@
+[35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
