@@ -1,0 +1,11 @@
+[0.007s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.048s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.076s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[1.371s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[1.371s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:78:9:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[Kif[m[K’
+[1.371s]    78 |         [01;31m[Kif[m[K (!crc_header_ok)
+[1.371s]       |         [01;31m[K^~[m[K
+[1.632s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test_read.cpp.o] Error 1
+[1.633s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[1.633s] gmake: *** [Makefile:146: all] Error 2
+[1.635s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20

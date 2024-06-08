@@ -60,9 +60,6 @@ class Port
 public:
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
-    //TEST
-    void test_receive();
-    void test_transmit();
     long getNumRead(){return num_read;}
     long getNumWrite(){return num_write;}
     int getErrorCount(){return error_count;}

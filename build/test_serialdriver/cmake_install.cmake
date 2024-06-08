@@ -1,8 +1,8 @@
-# Install script for directory: /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver
+# Install script for directory: /home/zoellickhan/Code/ws_testROS/src/test_serialdriver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver")
+  set(CMAKE_INSTALL_PREFIX "/home/zoellickhan/Code/ws_testROS/install/test_serialdriver")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,11 +43,11 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/test_serialdriver")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/test_serialdriver")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/test_serialdriver")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/test_serialdriver")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -55,7 +55,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver/environment" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver/environment" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -63,42 +63,62 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver/environment" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver/environment" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/packages/test_serialdriver")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_index/share/ament_index/resource_index/packages/test_serialdriver")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver/cmake" TYPE FILE FILES
-    "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_core/test_serialdriverConfig.cmake"
-    "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_core/test_serialdriverConfig-version.cmake"
+    "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_core/test_serialdriverConfig.cmake"
+    "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_core/test_serialdriverConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/test_serialdriver" TYPE FILE FILES "/home/zoellickhan/Code/ws_testROS/src/test_serialdriver/package.xml")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver" TYPE EXECUTABLE FILES "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/test_serialdriver")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver"
+         OLD_RPATH "/opt/ros/humble/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/test_serialdriver/test_serialdriver")
+    endif()
+  endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -109,5 +129,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

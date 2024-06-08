@@ -1,0 +1,11 @@
+[0.007s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver -- -j20 -l20
+[0.070s] [35m[1mConsolidate compiler generated dependencies of target test_serialdriver[0m
+[0.098s] [ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
+[1.495s] In file included from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:5[m[K:
+[1.495s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/protocol.hpp:217:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kpacked[m[K’ was not declared in this scope
+[1.495s]   217 | } attribute(([01;31m[Kpacked[m[K));
+[1.495s]       |              [01;31m[K^~~~~~[m[K
+[1.777s] gmake[2]: *** [CMakeFiles/test_serialdriver.dir/build.make:76: CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o] Error 1
+[1.777s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_serialdriver.dir/all] Error 2
+[1.778s] gmake: *** [Makefile:146: all] Error 2
+[1.779s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver -- -j20 -l20

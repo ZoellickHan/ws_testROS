@@ -1,0 +1,11 @@
+[0.006s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.044s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.076s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/crc.cpp.o[0m
+[0.087s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/crc.cpp:4:10:[m[K [01;31m[Kfatal error: [m[Krm_serial_driver/crc.hpp: No such file or directory
+[0.088s]     4 | #include [01;31m[K"rm_serial_driver/crc.hpp"[m[K
+[0.088s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.088s] compilation terminated.
+[0.088s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:104: CMakeFiles/test_ch343.dir/src/crc.cpp.o] Error 1
+[0.089s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[0.089s] gmake: *** [Makefile:146: all] Error 2
+[0.092s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20

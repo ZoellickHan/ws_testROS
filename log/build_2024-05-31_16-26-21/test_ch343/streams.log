@@ -1,0 +1,26 @@
+[0.008s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.047s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.071s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[1.712s] [ 50%] [32m[1mLinking CXX executable test_ch343[0m
+[1.774s] [100%] Built target test_ch343
+[1.780s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[1.798s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343
+[1.802s] -- Install configuration: ""
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/environment/path.sh
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/environment/path.dsv
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/local_setup.bash
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/local_setup.sh
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/local_setup.zsh
+[1.802s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/local_setup.dsv
+[1.803s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/package.dsv
+[1.803s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+[1.803s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+[1.803s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+[1.803s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/share/test_ch343/package.xml
+[1.804s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343
+[1.804s] -- Set runtime path of "/home/zoellickhan/Code/2024CV/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343" to ""
+[1.804s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343

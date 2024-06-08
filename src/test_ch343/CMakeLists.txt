@@ -25,10 +25,9 @@ ament_package()
 
 add_executable(test_ch343 
   src/test_read.cpp
-  src/newDriver.cpp)
+  src/newDriver.cpp
+  src/crc.cpp)
 ament_target_dependencies(test_ch343 rclcpp)
-
-
 
 install(TARGETS
   test_ch343

@@ -22,3 +22,15 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+
+
+add_executable(test_serialdriver 
+  src/test_write.cpp
+  src/newDriver.cpp
+  src/crc.cpp)
+ament_target_dependencies(test_serialdriver rclcpp)
+
+install(TARGETS
+  test_serialdriver
+  DESTINATION lib/${PROJECT_NAME}
+)

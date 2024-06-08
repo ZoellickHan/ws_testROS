@@ -1,0 +1,26 @@
+[0.009s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver -- -j20 -l20
+[0.032s] [35m[1mConsolidate compiler generated dependencies of target test_serialdriver[0m
+[0.044s] [ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
+[2.018s] [ 50%] [32m[1mLinking CXX executable test_serialdriver[0m
+[2.085s] [100%] Built target test_serialdriver
+[2.092s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver -- -j20 -l20
+[2.108s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver
+[2.112s] -- Install configuration: ""
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/package_run_dependencies/test_serialdriver
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/parent_prefix_path/test_serialdriver
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/ament_prefix_path.sh
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/ament_prefix_path.dsv
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/path.sh
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/path.dsv
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.bash
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.sh
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.zsh
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.dsv
+[2.113s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/package.dsv
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/packages/test_serialdriver
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/cmake/test_serialdriverConfig.cmake
+[2.113s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/cmake/test_serialdriverConfig-version.cmake
+[2.114s] -- Up-to-date: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/share/test_serialdriver/package.xml
+[2.114s] -- Installing: /home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/lib/test_serialdriver/test_serialdriver
+[2.114s] -- Set runtime path of "/home/zoellickhan/Code/2024CV/ws_testROS/install/test_serialdriver/lib/test_serialdriver/test_serialdriver" to ""
+[2.115s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver

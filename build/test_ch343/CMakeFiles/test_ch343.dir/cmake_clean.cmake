@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test_ch343.dir/src/crc.cpp.o"
+  "CMakeFiles/test_ch343.dir/src/crc.cpp.o.d"
   "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o"
   "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o.d"
   "CMakeFiles/test_ch343.dir/src/test_read.cpp.o"

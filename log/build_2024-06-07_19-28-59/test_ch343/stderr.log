@@ -1,0 +1,14 @@
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:46:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   46 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:63:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   63 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:177:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  177 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:194:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  194 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K

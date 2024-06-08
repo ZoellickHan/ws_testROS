@@ -1,0 +1,73 @@
+-- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver
+[ 66%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/newDriver.cpp.o[0m
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::test_transmit()[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:57:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+   57 | [01;35m[K}[m[K
+      | [01;35m[K^[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:70:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   70 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:87:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   87 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:201:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  201 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/newDriver.cpp:218:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  218 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:17:5:[m[K [01;31m[Kerror: [m[K‘[01m[Krclcpp::init[m[K’ is not a class member
+   17 |     [01;31m[Krclcpp[m[K::init(argc, argv);
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:23:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klast_time[m[K’ was not declared in this scope; did you mean ‘[01m[KlastTime[m[K’?
+   23 |     [01;31m[Klast_time[m[K = timeptr;
+      |     [01;31m[K^~~~~~~~~[m[K
+      |     [32m[KlastTime[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:23:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimeptr[m[K’ was not declared in this scope; did you mean ‘[01m[Ktime_t[m[K’?
+   23 |     last_time = [01;31m[Ktimeptr[m[K;
+      |                 [01;31m[K^~~~~~~[m[K
+      |                 [32m[Ktime_t[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:27:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kperiod[m[K’ was not declared in this scope; did you mean ‘[01m[Kperror[m[K’?
+   27 |         [01;31m[Kperiod[m[K = timeptr - last_time;
+      |         [01;31m[K^~~~~~[m[K
+      |         [32m[Kperror[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:28:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kthroughput[m[K’ was not declared in this scope
+   28 |         if(period != 0) [01;31m[Kthroughput[m[K = port->getNumRead()/period*10000;
+      |                         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:31:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kperiod[m[K’ was not declared in this scope; did you mean ‘[01m[Kperror[m[K’?
+   31 |     printf("time: %ld, throuhtput: %f \n",[01;31m[Kperiod[m[K,throughput);
+      |                                           [01;31m[K^~~~~~[m[K
+      |                                           [32m[Kperror[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:31:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kthroughput[m[K’ was not declared in this scope
+   31 |     printf("time: %ld, throuhtput: %f \n",period,[01;31m[Kthroughput[m[K);
+      |                                                  [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:15:12:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KlastTime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   15 |     double [01;35m[KlastTime[m[K = ts.
+      |            [01;35m[K^~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/test_serialdriver.dir/build.make:76: CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_serialdriver.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

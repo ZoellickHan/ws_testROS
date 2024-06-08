@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343
+CMAKE_SOURCE_DIR = /home/zoellickhan/Code/ws_testROS/src/test_ch343
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343
+CMAKE_BINARY_DIR = /home/zoellickhan/Code/ws_testROS/build/test_ch343
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles /home/zoellickhan/Code/ws_testROS/build/test_ch343//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -210,6 +210,30 @@ test_ch343/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ch343.dir/build.make CMakeFiles/test_ch343.dir/build
 .PHONY : test_ch343/fast
 
+src/crc.o: src/crc.cpp.o
+.PHONY : src/crc.o
+
+# target to build an object file
+src/crc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ch343.dir/build.make CMakeFiles/test_ch343.dir/src/crc.cpp.o
+.PHONY : src/crc.cpp.o
+
+src/crc.i: src/crc.cpp.i
+.PHONY : src/crc.i
+
+# target to preprocess a source file
+src/crc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ch343.dir/build.make CMakeFiles/test_ch343.dir/src/crc.cpp.i
+.PHONY : src/crc.cpp.i
+
+src/crc.s: src/crc.cpp.s
+.PHONY : src/crc.s
+
+# target to generate assembly for a file
+src/crc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_ch343.dir/build.make CMakeFiles/test_ch343.dir/src/crc.cpp.s
+.PHONY : src/crc.cpp.s
+
 src/newDriver.o: src/newDriver.cpp.o
 .PHONY : src/newDriver.o
 
@@ -274,6 +298,9 @@ help:
 	@echo "... test_ch343_uninstall"
 	@echo "... uninstall"
 	@echo "... test_ch343"
+	@echo "... src/crc.o"
+	@echo "... src/crc.i"
+	@echo "... src/crc.s"
 	@echo "... src/newDriver.o"
 	@echo "... src/newDriver.i"
 	@echo "... src/newDriver.s"

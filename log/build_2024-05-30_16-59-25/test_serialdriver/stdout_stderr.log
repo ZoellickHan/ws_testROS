@@ -1,0 +1,9 @@
+[35m[1mConsolidate compiler generated dependencies of target test_serialdriver[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
+In file included from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/test_write.cpp:5[m[K:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver/src/protocol.hpp:217:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kpacked[m[K’ was not declared in this scope
+  217 | } attribute(([01;31m[Kpacked[m[K));
+      |              [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/test_serialdriver.dir/build.make:76: CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_serialdriver.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

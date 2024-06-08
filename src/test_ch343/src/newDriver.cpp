@@ -12,6 +12,8 @@
 #include <getopt.h>
 #include <linux/serial.h>
 
+#include "protocol.hpp" 
+
 #define termios asmtermios
 #include <asm/termios.h>
 #undef termios
@@ -34,30 +36,6 @@ Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 Port::~Port(){}
 
 SerialConfig::~SerialConfig(){}
-
-void Port::test_receive()
-{
-	num_per_read = read(fd, RxBuff, sizeof(RxBuff));
-	num_read += num_per_read;
-	
-	for(int a=0;a<num_per_read;a++)
-	{
-		if (RxBuff[a] != 0xff )
-		{
-			error_count++;
-			printf("error!!! the error is: %d \n  ",RxBuff[a]);
-		}
-	}
-}
-
-
-void Port::test_transmit()
-{
-
-}
-
-
-
 
 
 /**
@@ -260,17 +238,33 @@ int Port::openPort()
 	return fd;
 }
 
+void printHexValues(const std::vector<uint8_t>& vec) {
+    for (auto num : vec) {
+        printf("%02X ", num);
+    }
+    printf("\n");
+}
+
 /**
  *  Receive the data
 */
 int Port::receive(std::vector<uint8_t> & buff)
 {   
     int num_per_read = 0 ;
-	num_per_read = read(fd,RxBuff,sizeof(RxBuff));
-	memcpy(buff.data(),RxBuff,buff.size());
-	
+	int readIndex    = 0 ; 
+	int writeIndex	 = 0 ;
+
+	num_per_read = read(fd,RxBuff+writeIndex,sizeof(RxBuff));
+	writeIndex += num_per_read;
 	if(num_per_read > 0)
+	{		
+		// for(int i = 0;i<num_per_read;i++)
+		// {
+				printf("receive: %d\n")
+		// }
+		// // printf("Not Boji \n");
     	return num_per_read;
+	}
 	else
 		return -1;
 }

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343
+CMAKE_SOURCE_DIR = /home/zoellickhan/Code/ws_testROS/src/test_ch343
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343
+CMAKE_BINARY_DIR = /home/zoellickhan/Code/ws_testROS/build/test_ch343
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test_ch343.dir/depend.make
@@ -70,43 +70,59 @@ include CMakeFiles/test_ch343.dir/progress.make
 include CMakeFiles/test_ch343.dir/flags.make
 
 CMakeFiles/test_ch343.dir/src/test_read.cpp.o: CMakeFiles/test_ch343.dir/flags.make
-CMakeFiles/test_ch343.dir/src/test_read.cpp.o: /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp
+CMakeFiles/test_ch343.dir/src/test_read.cpp.o: /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp
 CMakeFiles/test_ch343.dir/src/test_read.cpp.o: CMakeFiles/test_ch343.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_ch343.dir/src/test_read.cpp.o -MF CMakeFiles/test_ch343.dir/src/test_read.cpp.o.d -o CMakeFiles/test_ch343.dir/src/test_read.cpp.o -c /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_ch343.dir/src/test_read.cpp.o -MF CMakeFiles/test_ch343.dir/src/test_read.cpp.o.d -o CMakeFiles/test_ch343.dir/src/test_read.cpp.o -c /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp
 
 CMakeFiles/test_ch343.dir/src/test_read.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_ch343.dir/src/test_read.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp > CMakeFiles/test_ch343.dir/src/test_read.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp > CMakeFiles/test_ch343.dir/src/test_read.cpp.i
 
 CMakeFiles/test_ch343.dir/src/test_read.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_ch343.dir/src/test_read.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp -o CMakeFiles/test_ch343.dir/src/test_read.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp -o CMakeFiles/test_ch343.dir/src/test_read.cpp.s
 
 CMakeFiles/test_ch343.dir/src/newDriver.cpp.o: CMakeFiles/test_ch343.dir/flags.make
-CMakeFiles/test_ch343.dir/src/newDriver.cpp.o: /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp
+CMakeFiles/test_ch343.dir/src/newDriver.cpp.o: /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp
 CMakeFiles/test_ch343.dir/src/newDriver.cpp.o: CMakeFiles/test_ch343.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_ch343.dir/src/newDriver.cpp.o -MF CMakeFiles/test_ch343.dir/src/newDriver.cpp.o.d -o CMakeFiles/test_ch343.dir/src/newDriver.cpp.o -c /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_ch343.dir/src/newDriver.cpp.o -MF CMakeFiles/test_ch343.dir/src/newDriver.cpp.o.d -o CMakeFiles/test_ch343.dir/src/newDriver.cpp.o -c /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp
 
 CMakeFiles/test_ch343.dir/src/newDriver.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_ch343.dir/src/newDriver.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp > CMakeFiles/test_ch343.dir/src/newDriver.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp > CMakeFiles/test_ch343.dir/src/newDriver.cpp.i
 
 CMakeFiles/test_ch343.dir/src/newDriver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_ch343.dir/src/newDriver.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp -o CMakeFiles/test_ch343.dir/src/newDriver.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp -o CMakeFiles/test_ch343.dir/src/newDriver.cpp.s
+
+CMakeFiles/test_ch343.dir/src/crc.cpp.o: CMakeFiles/test_ch343.dir/flags.make
+CMakeFiles/test_ch343.dir/src/crc.cpp.o: /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/crc.cpp
+CMakeFiles/test_ch343.dir/src/crc.cpp.o: CMakeFiles/test_ch343.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test_ch343.dir/src/crc.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_ch343.dir/src/crc.cpp.o -MF CMakeFiles/test_ch343.dir/src/crc.cpp.o.d -o CMakeFiles/test_ch343.dir/src/crc.cpp.o -c /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/crc.cpp
+
+CMakeFiles/test_ch343.dir/src/crc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_ch343.dir/src/crc.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/crc.cpp > CMakeFiles/test_ch343.dir/src/crc.cpp.i
+
+CMakeFiles/test_ch343.dir/src/crc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_ch343.dir/src/crc.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/crc.cpp -o CMakeFiles/test_ch343.dir/src/crc.cpp.s
 
 # Object files for target test_ch343
 test_ch343_OBJECTS = \
 "CMakeFiles/test_ch343.dir/src/test_read.cpp.o" \
-"CMakeFiles/test_ch343.dir/src/newDriver.cpp.o"
+"CMakeFiles/test_ch343.dir/src/newDriver.cpp.o" \
+"CMakeFiles/test_ch343.dir/src/crc.cpp.o"
 
 # External object files for target test_ch343
 test_ch343_EXTERNAL_OBJECTS =
 
 test_ch343: CMakeFiles/test_ch343.dir/src/test_read.cpp.o
 test_ch343: CMakeFiles/test_ch343.dir/src/newDriver.cpp.o
+test_ch343: CMakeFiles/test_ch343.dir/src/crc.cpp.o
 test_ch343: CMakeFiles/test_ch343.dir/build.make
 test_ch343: /opt/ros/humble/lib/librclcpp.so
 test_ch343: /opt/ros/humble/lib/liblibstatistics_collector.so
@@ -163,7 +179,7 @@ test_ch343: /opt/ros/humble/lib/librcutils.so
 test_ch343: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 test_ch343: /opt/ros/humble/lib/libtracetools.so
 test_ch343: CMakeFiles/test_ch343.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test_ch343"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test_ch343"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_ch343.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -175,6 +191,6 @@ CMakeFiles/test_ch343.dir/clean:
 .PHONY : CMakeFiles/test_ch343.dir/clean
 
 CMakeFiles/test_ch343.dir/depend:
-	cd /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343 /home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343 /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343/CMakeFiles/test_ch343.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zoellickhan/Code/ws_testROS/build/test_ch343 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zoellickhan/Code/ws_testROS/src/test_ch343 /home/zoellickhan/Code/ws_testROS/src/test_ch343 /home/zoellickhan/Code/ws_testROS/build/test_ch343 /home/zoellickhan/Code/ws_testROS/build/test_ch343 /home/zoellickhan/Code/ws_testROS/build/test_ch343/CMakeFiles/test_ch343.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test_ch343.dir/depend
 

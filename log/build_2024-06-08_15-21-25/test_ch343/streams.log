@@ -1,0 +1,84 @@
+[0.018s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/zoellickhan/Code/ws_testROS/src/test_ch343 -DCMAKE_INSTALL_PREFIX=/home/zoellickhan/Code/ws_testROS/install/test_ch343
+[0.099s] -- The C compiler identification is GNU 11.4.0
+[0.184s] -- The CXX compiler identification is GNU 11.4.0
+[0.194s] -- Detecting C compiler ABI info
+[0.271s] -- Detecting C compiler ABI info - done
+[0.280s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.280s] -- Detecting C compile features
+[0.281s] -- Detecting C compile features - done
+[0.285s] -- Detecting CXX compiler ABI info
+[0.383s] -- Detecting CXX compiler ABI info - done
+[0.393s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.393s] -- Detecting CXX compile features
+[0.394s] -- Detecting CXX compile features - done
+[0.399s] -- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.608s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.728s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[0.787s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.794s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.806s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.826s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.852s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.948s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.950s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.072s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.102s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.160s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.173s] -- Looking for pthread.h
+[1.274s] -- Looking for pthread.h - found
+[1.274s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.362s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.362s] -- Found Threads: TRUE  
+[1.586s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.686s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.686s] -- Configured cppcheck include dirs: 
+[1.686s] -- Configured cppcheck exclude dirs and/or files: 
+[1.687s] -- Added test 'lint_cmake' to check CMake code style
+[1.688s] -- Added test 'uncrustify' to check C / C++ code style
+[1.689s] -- Configured uncrustify additional arguments: 
+[1.689s] -- Added test 'xmllint' to check XML markup files
+[1.691s] -- Configuring done
+[1.700s] -- Generating done
+[1.702s] -- Build files have been written to: /home/zoellickhan/Code/ws_testROS/build/test_ch343
+[1.721s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/zoellickhan/Code/ws_testROS/src/test_ch343 -DCMAKE_INSTALL_PREFIX=/home/zoellickhan/Code/ws_testROS/install/test_ch343
+[1.721s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[1.778s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[6.008s] [ 50%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/crc.cpp.o[0m
+[6.052s] [ 75%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[6.710s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[6.711s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:48:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[6.711s]    48 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[6.711s]       |                       [01;35m[K^~~~~~~[m[K
+[6.711s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:65:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[6.711s]    65 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[6.711s]       |                       [01;35m[K^~~~~~~[m[K
+[6.711s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[6.711s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:179:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[6.711s]   179 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[6.711s]       |                       [01;35m[K^~~~~~~[m[K
+[6.712s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:196:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[6.712s]   196 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[6.712s]       |                       [01;35m[K^~~~~~~[m[K
+[6.872s] [100%] [32m[1mLinking CXX executable test_ch343[0m
+[7.018s] [100%] Built target test_ch343
+[7.035s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[7.069s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343
+[7.078s] -- Install configuration: ""
+[7.078s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+[7.079s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+[7.079s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+[7.079s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+[7.079s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.sh
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.dsv
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.bash
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.sh
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.zsh
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.dsv
+[7.080s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.dsv
+[7.081s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+[7.081s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+[7.081s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+[7.081s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.xml
+[7.081s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343
+[7.083s] -- Set runtime path of "/home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343" to ""
+[7.093s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343

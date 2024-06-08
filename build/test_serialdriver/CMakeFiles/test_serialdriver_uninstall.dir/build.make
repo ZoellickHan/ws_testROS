@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver
+CMAKE_SOURCE_DIR = /home/zoellickhan/Code/ws_testROS/src/test_serialdriver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver
+CMAKE_BINARY_DIR = /home/zoellickhan/Code/ws_testROS/build/test_serialdriver
 
 # Utility rule file for test_serialdriver_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/test_serialdriver_uninstall.dir/compiler_depend.make
 include CMakeFiles/test_serialdriver_uninstall.dir/progress.make
 
 CMakeFiles/test_serialdriver_uninstall:
-	/usr/bin/cmake -P /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/usr/bin/cmake -P /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 test_serialdriver_uninstall: CMakeFiles/test_serialdriver_uninstall
 test_serialdriver_uninstall: CMakeFiles/test_serialdriver_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/test_serialdriver_uninstall.dir/clean:
 .PHONY : CMakeFiles/test_serialdriver_uninstall.dir/clean
 
 CMakeFiles/test_serialdriver_uninstall.dir/depend:
-	cd /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles/test_serialdriver_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zoellickhan/Code/ws_testROS/build/test_serialdriver && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zoellickhan/Code/ws_testROS/src/test_serialdriver /home/zoellickhan/Code/ws_testROS/src/test_serialdriver /home/zoellickhan/Code/ws_testROS/build/test_serialdriver /home/zoellickhan/Code/ws_testROS/build/test_serialdriver /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles/test_serialdriver_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test_serialdriver_uninstall.dir/depend
 

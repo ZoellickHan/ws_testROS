@@ -1,0 +1,224 @@
+[0.008s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.033s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.051s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[1.347s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[1.347s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:39:5:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.347s]    39 |     [01;31m[Kdata[m[K.reserve(sizeof(GimbalMsg));
+[1.347s]       |     [01;31m[K^~~~[m[K
+[1.355s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.355s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.355s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.355s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.355s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.355s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.355s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.355s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.355s]       |     [01;36m[K^~~~[m[K
+[1.355s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.355s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.355s]       |     [01;36m[K^~~~[m[K
+[1.355s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.355s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.355s]       |     [01;36m[K^~~~[m[K
+[1.355s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.355s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.355s]       |     [01;36m[K^~~~[m[K
+[1.355s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.355s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.356s]       |                 [01;36m[K^~~~[m[K
+[1.356s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:51:36:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.356s]    51 |             single = port->receive([01;31m[Kdata[m[K);
+[1.356s]       |                                    [01;31m[K^~~~[m[K
+[1.356s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.356s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.356s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.356s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.356s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.356s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.356s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.356s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.356s]       |                 [01;36m[K^~~~[m[K
+[1.356s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:52:13:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.356s]    52 |             [01;31m[Kdata[m[K.insert(data.begin(), header[2]);
+[1.356s]       |             [01;31m[K^~~~[m[K
+[1.356s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.356s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.356s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.356s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.356s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.356s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.356s]       |     [01;36m[K^~~~[m[K
+[1.356s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.356s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.357s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.357s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.357s]       |                 [01;36m[K^~~~[m[K
+[1.357s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:52:25:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.357s]    52 |             data.insert([01;31m[Kdata[m[K.begin(), header[2]);
+[1.357s]       |                         [01;31m[K^~~~[m[K
+[1.357s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.357s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.357s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.357s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.357s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.357s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.357s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.357s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.357s]       |     [01;36m[K^~~~[m[K
+[1.357s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.357s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.357s]       |                 [01;36m[K^~~~[m[K
+[1.357s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:53:13:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.357s]    53 |             [01;31m[Kdata[m[K.insert(data.begin(), header[1]);
+[1.357s]       |             [01;31m[K^~~~[m[K
+[1.357s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.357s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.357s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.358s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.358s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.358s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.358s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.358s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.358s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.358s]       |                 [01;36m[K^~~~[m[K
+[1.358s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:53:25:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.358s]    53 |             data.insert([01;31m[Kdata[m[K.begin(), header[1]);
+[1.358s]       |                         [01;31m[K^~~~[m[K
+[1.358s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.358s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.358s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.358s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.358s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.358s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.358s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.358s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.358s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.358s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.358s]       |     [01;36m[K^~~~[m[K
+[1.358s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.358s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.359s]       |                 [01;36m[K^~~~[m[K
+[1.359s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:54:13:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.359s]    54 |             [01;31m[Kdata[m[K.insert(data.begin(), header[0]);
+[1.359s]       |             [01;31m[K^~~~[m[K
+[1.359s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.359s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.359s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.359s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.359s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.359s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.359s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.359s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.359s]       |                 [01;36m[K^~~~[m[K
+[1.359s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:54:25:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.359s]    54 |             data.insert([01;31m[Kdata[m[K.begin(), header[0]);
+[1.359s]       |                         [01;31m[K^~~~[m[K
+[1.359s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.359s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.359s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.359s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.359s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.359s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.359s]       |     [01;36m[K^~~~[m[K
+[1.359s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.359s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.360s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.360s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.360s]       |                 [01;36m[K^~~~[m[K
+[1.360s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:55:36:[m[K [01;31m[Kerror: [m[Kreference to ‘[01m[Kdata[m[K’ is ambiguous
+[1.360s]    55 |             gimbalmsg = fromVector([01;31m[Kdata[m[K);
+[1.360s]       |                                    [01;31m[K^~~~[m[K
+[1.360s] In file included from [01m[K/usr/include/c++/11/array:41[m[K,
+[1.360s]                  from [01m[K/usr/include/c++/11/tuple:39[m[K,
+[1.360s]                  from [01m[K/usr/include/c++/11/bits/unique_ptr.h:37[m[K,
+[1.360s]                  from [01m[K/usr/include/c++/11/memory:76[m[K,
+[1.360s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:153[m[K,
+[1.360s]                  from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:2[m[K:
+[1.360s] [01m[K/usr/include/c++/11/bits/range_access.h:319:5:[m[K [01;36m[Knote: [m[Kcandidates are: ‘[01m[Ktemplate<class _Tp> constexpr const _Tp* std::data(std::initializer_list<_Tp>)[m[K’
+[1.360s]   319 |     [01;36m[Kdata[m[K(initializer_list<_Tp> __il) noexcept
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/usr/include/c++/11/bits/range_access.h:310:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Tp, long unsigned int _Nm> constexpr _Tp* std::data(_Tp (&)[_Nm])[m[K’
+[1.360s]   310 |     [01;36m[Kdata[m[K(_Tp (&__array)[_Nm]) noexcept
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/usr/include/c++/11/bits/range_access.h:300:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(const _Container&)[m[K’
+[1.360s]   300 |     [01;36m[Kdata[m[K(const _Container& __cont) noexcept(noexcept(__cont.data()))
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/usr/include/c++/11/bits/range_access.h:290:5:[m[K [01;36m[Knote: [m[K                ‘[01m[Ktemplate<class _Container> constexpr decltype (__cont.data()) std::data(_Container&)[m[K’
+[1.360s]   290 |     [01;36m[Kdata[m[K(_Container& __cont) noexcept(noexcept(__cont.data()))
+[1.360s]       |     [01;36m[K^~~~[m[K
+[1.360s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:30:17:[m[K [01;36m[Knote: [m[K                ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> > data[m[K’
+[1.360s]    30 | vector<uint8_t> [01;36m[Kdata[m[K;
+[1.360s]       |                 [01;36m[K^~~~[m[K
+[1.607s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test_read.cpp.o] Error 1
+[1.608s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[1.608s] gmake: *** [Makefile:146: all] Error 2
+[1.609s] Invoked command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20

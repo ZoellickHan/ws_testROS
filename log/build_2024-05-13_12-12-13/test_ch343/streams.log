@@ -1,0 +1,64 @@
+[0.009s] Invoking command in '/home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.057s] -- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.222s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[0.276s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.282s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.295s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.316s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.336s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.390s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.391s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.490s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.646s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.761s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.762s] -- Configured cppcheck include dirs: 
+[0.762s] -- Configured cppcheck exclude dirs and/or files: 
+[0.762s] -- Added test 'lint_cmake' to check CMake code style
+[0.764s] -- Added test 'uncrustify' to check C / C++ code style
+[0.764s] -- Configured uncrustify additional arguments: 
+[0.764s] -- Added test 'xmllint' to check XML markup files
+[0.767s] -- Configuring done
+[0.780s] -- Generating done
+[0.782s] -- Build files have been written to: /home/zoellickhan/Code/2024CV/ws_testROS/build/test_ch343
+[0.819s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.841s] [ 33%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[0.842s] [ 66%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[1.120s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::test_transmit()[m[K’:
+[1.120s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:60:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[1.120s]    60 | [01;35m[K}[m[K
+[1.120s]       | [01;35m[K^[m[K
+[1.120s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[1.120s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:73:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[1.120s]    73 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[1.120s]       |                       [01;35m[K^~~~~~~[m[K
+[1.120s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:90:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[1.120s]    90 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[1.120s]       |                       [01;35m[K^~~~~~~[m[K
+[1.121s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[1.121s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:204:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[1.121s]   204 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[1.121s]       |                       [01;35m[K^~~~~~~[m[K
+[1.121s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:221:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[1.121s]   221 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[1.121s]       |                       [01;35m[K^~~~~~~[m[K
+[2.880s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[2.880s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:37:21:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%ld[m[K’ expects argument of type ‘[01m[Klong int[m[K’, but argument 2 has type ‘[01m[Kdouble[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[2.881s]    37 |     printf("time: [01;35m[K%ld[m[K, throuhtput: %f \n",[32m[Kperiod[m[K,throughput);
+[2.881s]       |                   [01;35m[K~~^[m[K                     [32m[K~~~~~~[m[K
+[2.881s]       |                     [01;35m[K|[m[K                     [32m[K|[m[K
+[2.881s]       |                     [01;35m[Klong int[m[K              [32m[Kdouble[m[K
+[2.881s]       |                   [32m[K%f[m[K
+[3.307s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:28:21:[m[K [01;35m[Kwarning: [m[K‘[01m[Kts1.timespec::tv_sec[m[K’ may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+[3.307s]    28 |     last_time = [01;35m[Kts1.tv_sec[m[K;
+[3.307s]       |                 [01;35m[K~~~~^~~~~~[m[K
+[3.307s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:17:21:[m[K [01;36m[Knote: [m[K‘[01m[Kts1[m[K’ declared here
+[3.307s]    17 |     struct timespec [01;36m[Kts1[m[K;
+[3.307s]       |                     [01;36m[K^~~[m[K
+[3.307s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:32:22:[m[K [01;35m[Kwarning: [m[K‘[01m[Kts1.timespec::tv_sec[m[K’ may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+[3.307s]    32 |         period = [01;35m[Kts1.tv_sec[m[K - last_time;
+[3.307s]       |                  [01;35m[K~~~~^~~~~~[m[K
+[3.307s] [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:17:21:[m[K [01;36m[Knote: [m[K‘[01m[Kts1[m[K’ declared here
+[3.307s]    17 |     struct timespec [01;36m[Kts1[m[K;
+[3.308s]       |                     [01;36m[K^~~[m[K
+[3.442s] [100%] [32m[1mLinking CXX executable test_ch343[0m
+[3.599s] [100%] Built target test_ch343

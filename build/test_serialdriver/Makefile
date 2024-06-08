@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver
+CMAKE_SOURCE_DIR = /home/zoellickhan/Code/ws_testROS/src/test_serialdriver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver
+CMAKE_BINARY_DIR = /home/zoellickhan/Code/ws_testROS/build/test_serialdriver
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles /home/zoellickhan/Code/ws_testROS/build/test_serialdriver//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -197,6 +197,91 @@ test_serialdriver_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver_uninstall.dir/build.make CMakeFiles/test_serialdriver_uninstall.dir/build
 .PHONY : test_serialdriver_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named test_serialdriver
+
+# Build rule for target.
+test_serialdriver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_serialdriver
+.PHONY : test_serialdriver
+
+# fast build rule for target.
+test_serialdriver/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/build
+.PHONY : test_serialdriver/fast
+
+src/crc.o: src/crc.cpp.o
+.PHONY : src/crc.o
+
+# target to build an object file
+src/crc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/crc.cpp.o
+.PHONY : src/crc.cpp.o
+
+src/crc.i: src/crc.cpp.i
+.PHONY : src/crc.i
+
+# target to preprocess a source file
+src/crc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/crc.cpp.i
+.PHONY : src/crc.cpp.i
+
+src/crc.s: src/crc.cpp.s
+.PHONY : src/crc.s
+
+# target to generate assembly for a file
+src/crc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/crc.cpp.s
+.PHONY : src/crc.cpp.s
+
+src/newDriver.o: src/newDriver.cpp.o
+.PHONY : src/newDriver.o
+
+# target to build an object file
+src/newDriver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/newDriver.cpp.o
+.PHONY : src/newDriver.cpp.o
+
+src/newDriver.i: src/newDriver.cpp.i
+.PHONY : src/newDriver.i
+
+# target to preprocess a source file
+src/newDriver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/newDriver.cpp.i
+.PHONY : src/newDriver.cpp.i
+
+src/newDriver.s: src/newDriver.cpp.s
+.PHONY : src/newDriver.s
+
+# target to generate assembly for a file
+src/newDriver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/newDriver.cpp.s
+.PHONY : src/newDriver.cpp.s
+
+src/test_write.o: src/test_write.cpp.o
+.PHONY : src/test_write.o
+
+# target to build an object file
+src/test_write.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o
+.PHONY : src/test_write.cpp.o
+
+src/test_write.i: src/test_write.cpp.i
+.PHONY : src/test_write.i
+
+# target to preprocess a source file
+src/test_write.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/test_write.cpp.i
+.PHONY : src/test_write.cpp.i
+
+src/test_write.s: src/test_write.cpp.s
+.PHONY : src/test_write.s
+
+# target to generate assembly for a file
+src/test_write.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/src/test_write.cpp.s
+.PHONY : src/test_write.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +297,16 @@ help:
 	@echo "... test"
 	@echo "... test_serialdriver_uninstall"
 	@echo "... uninstall"
+	@echo "... test_serialdriver"
+	@echo "... src/crc.o"
+	@echo "... src/crc.i"
+	@echo "... src/crc.s"
+	@echo "... src/newDriver.o"
+	@echo "... src/newDriver.i"
+	@echo "... src/newDriver.s"
+	@echo "... src/test_write.o"
+	@echo "... src/test_write.i"
+	@echo "... src/test_write.s"
 .PHONY : help
 
 

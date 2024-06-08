@@ -8,8 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp" "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o" "gcc" "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o.d"
-  "/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp" "CMakeFiles/test_ch343.dir/src/test_read.cpp.o" "gcc" "CMakeFiles/test_ch343.dir/src/test_read.cpp.o.d"
+  "/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/crc.cpp" "CMakeFiles/test_ch343.dir/src/crc.cpp.o" "gcc" "CMakeFiles/test_ch343.dir/src/crc.cpp.o.d"
+  "/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp" "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o" "gcc" "CMakeFiles/test_ch343.dir/src/newDriver.cpp.o.d"
+  "/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp" "CMakeFiles/test_ch343.dir/src/test_read.cpp.o" "gcc" "CMakeFiles/test_ch343.dir/src/test_read.cpp.o.d"
   )
 
 # Targets to which this target links.

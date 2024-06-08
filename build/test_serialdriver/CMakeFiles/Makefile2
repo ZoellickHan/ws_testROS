@@ -54,16 +54,16 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver
+CMAKE_SOURCE_DIR = /home/zoellickhan/Code/ws_testROS/src/test_serialdriver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver
+CMAKE_BINARY_DIR = /home/zoellickhan/Code/ws_testROS/build/test_serialdriver
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/test_serialdriver.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/test_serialdriver_uninstall.dir/clean
+clean: CMakeFiles/test_serialdriver.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -82,14 +83,14 @@ clean: CMakeFiles/test_serialdriver_uninstall.dir/clean
 CMakeFiles/uninstall.dir/all: CMakeFiles/test_serialdriver_uninstall.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles --progress-num= "Built target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles --progress-num= "Built target uninstall"
 .PHONY : CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
 .PHONY : CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -108,14 +109,14 @@ CMakeFiles/uninstall.dir/clean:
 CMakeFiles/test_serialdriver_uninstall.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver_uninstall.dir/build.make CMakeFiles/test_serialdriver_uninstall.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver_uninstall.dir/build.make CMakeFiles/test_serialdriver_uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles --progress-num= "Built target test_serialdriver_uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles --progress-num= "Built target test_serialdriver_uninstall"
 .PHONY : CMakeFiles/test_serialdriver_uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_serialdriver_uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_serialdriver_uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
 .PHONY : CMakeFiles/test_serialdriver_uninstall.dir/rule
 
 # Convenience name for target.
@@ -126,6 +127,32 @@ test_serialdriver_uninstall: CMakeFiles/test_serialdriver_uninstall.dir/rule
 CMakeFiles/test_serialdriver_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver_uninstall.dir/build.make CMakeFiles/test_serialdriver_uninstall.dir/clean
 .PHONY : CMakeFiles/test_serialdriver_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_serialdriver.dir
+
+# All Build rule for target.
+CMakeFiles/test_serialdriver.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles --progress-num=1,2,3,4 "Built target test_serialdriver"
+.PHONY : CMakeFiles/test_serialdriver.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_serialdriver.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_serialdriver.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zoellickhan/Code/ws_testROS/build/test_serialdriver/CMakeFiles 0
+.PHONY : CMakeFiles/test_serialdriver.dir/rule
+
+# Convenience name for target.
+test_serialdriver: CMakeFiles/test_serialdriver.dir/rule
+.PHONY : test_serialdriver
+
+# clean rule for target.
+CMakeFiles/test_serialdriver.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serialdriver.dir/build.make CMakeFiles/test_serialdriver.dir/clean
+.PHONY : CMakeFiles/test_serialdriver.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

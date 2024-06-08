@@ -1,0 +1,8 @@
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/crc.cpp:4:10:[m[K [01;31m[Kfatal error: [m[Krm_serial_driver/crc.hpp: No such file or directory
+    4 | #include [01;31m[K"rm_serial_driver/crc.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:104: CMakeFiles/test_ch343.dir/src/crc.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

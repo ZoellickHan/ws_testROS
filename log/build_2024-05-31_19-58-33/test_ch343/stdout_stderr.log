@@ -1,0 +1,15 @@
+[35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:67:32:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> >*[m[K’ to ‘[01m[Kstd::vector<unsigned char, std::allocator<unsigned char> >&[m[K’
+   67 |         single = port->receive([01;31m[K&data[m[K);
+      |                                [01;31m[K^~~~~[m[K
+      |                                [01;31m[K|[m[K
+      |                                [01;31m[Kstd::vector<unsigned char, std::allocator<unsigned char> >*[m[K
+In file included from [01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:3[m[K:
+[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.hpp:75:41:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint newSerialDriver::Port::receive(std::vector<unsigned char, std::allocator<unsigned char> >&)[m[K’
+   75 |     int  receive([01;36m[Kstd::vector<uint8_t> & buff[m[K);
+      |                  [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test_read.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
