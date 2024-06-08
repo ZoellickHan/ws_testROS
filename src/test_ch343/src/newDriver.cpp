@@ -260,7 +260,7 @@ int Port::receive(std::vector<uint8_t> & buff)
 	{		
 		// for(int i = 0;i<num_per_read;i++)
 		// {
-				printf("receive: %d\n")
+				// printf("receive: %d\n")
 		// }
 		// // printf("Not Boji \n");
     	return num_per_read;

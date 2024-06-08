@@ -98,9 +98,6 @@ int main(int argc, char **argv)
             }
         
         
-            
-        
-
         
         // printf("TwoCRC_SentryGimbalMsg:%d \n",twoCRC_SentryGimbalMsg.dataLen);
         // if (!crc_ok) 
