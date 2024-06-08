@@ -68,11 +68,15 @@ public:
     bool setBaudRate();
     bool setFlowControl(bool isflowcontrol);
 
+    bool reopen();
     int  receive();
     int  transmit(std::vector<uint8_t> & buff);
-    void registerType();
+    void registerType(uint8_t typeIDArray[ID_NUM], int num);
     template <typename T>
-    int decode(std::vector<T> &userData);
+    int decode();
+
+    template <typename T> 
+    T Classify(std::vector<T> &userData);
 
     bool isPortInit();
     bool isPortOpen();
@@ -93,11 +97,13 @@ private:
     bool crc_ok = false;
     bool isinit = false;
     bool isopen = false;
+    int interestID[ID_NUM];
     uint8_t RxBuff[ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[ROSCOMM_BUFFER_SIZE];
 
     rm_serial_driver::Header header;
     std::vector<uint8_t> transform;
+
 };
 
 }//newSerialDriver

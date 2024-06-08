@@ -245,13 +245,19 @@ int Port::openPort()
 //     printf("\n");
 // }
 
+void Port::registerType(uint8_t typeIDArray[ID_NUM],int num)
+{
+	for(int i=0;i<ID_NUM;i++){
+		interestID[i] = typeIDArray[i];
+	}
+}
+
 /**
  *  Receive the data
 */
 template <typename T>
-int  Port::decode(std::vector<T> &userData)
+int  Port::decode()
 {	
-	T data;
 	transform.resize(sizeof(Header));
 	for(int i = putoutIndex; putoutIndex + sizeof(Header) <= putinIndex; i++ )
 	{
@@ -269,26 +275,35 @@ int  Port::decode(std::vector<T> &userData)
 		header = fromHeaderVector(transform);
 		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
 
+		// if(crc_ok_header)	Classify();
 		if(crc_ok_header)
 		{
-			transform.resize(sizeof(T));
-
-			if((putoutIndex + transform.size()) < putinIndex)
-				memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
-			else
+			for(int j : interestID)
 			{
-				memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
-				memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+				switch (j)
+				{
+				case GIMBAL_MSG:
+					Classify()
+					break;
+				
+				case CHASSIS_MSG:
+					break;
+				case SENTRY_GIMBAL_MSG:
+					break;
+				case FIELD_MSG:
+					break;
+				case TWOCRC_GIMBAL_MSG:
+					break;
+				case TWOCRC_CHASSIS_MSG:
+					break;
+				case TWOCRC_SENTRY_GIMBAL_MSG:
+					break;
+				case TWOCRC_FIELD_MSG:
+					break;
+				default:
+					break;
+				}
 			}
-		
-			data = fromTestVector(transform);
-			crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&data), sizeof(T));
-
-			if(crc_ok)
-			{
-				userData.emplace(data);
-				decodeCorrectNum ++;
-			} 
 		}
 
 		putoutIndex += sizeof(T);
@@ -297,6 +312,31 @@ int  Port::decode(std::vector<T> &userData)
 		i += sizeof(T);
 	}
 	return decodeCorrectNum;
+}
+
+template <typename T>
+T Port::Classify(std::vector<T> &userData)
+{
+	T data;
+	transform.resize(sizeof(T));
+
+	if((putoutIndex + transform.size()) < putinIndex)
+		memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
+	else
+	{
+		memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
+		memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+	}
+	data = fromTestVector(transform);
+
+	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&data), sizeof(T));
+
+	if(crc_ok)
+	{
+		userData.emplace(data);
+		decodeCorrectNum ++;
+	} 
+
 }
 
 int Port::receive()
@@ -358,6 +398,28 @@ bool Port::setFlowControl(bool isFlowControl)
 
     handshake = true;
     return true;
+}
+
+bool Port::reopen()
+{
+	if(isPortOpen()) closePort();
+
+	if(openPort()) return true;
+	else
+	{
+		config->devname = (char*)"/dev/ttyCH343USB0";
+		if(openPort()){	return true; }
+		else{
+			config->devname = (char*)"/dev/ttyCH343USB1";
+			if(openPort()) {return true;}
+			else{
+				config->devname = (char*)"/dev/ttyCH343USB2";
+				if(openPort()) return true;
+				else return false;
+			}
+		}
+
+	}
 }
 
 bool Port::isPortInit()

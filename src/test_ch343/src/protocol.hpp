@@ -34,7 +34,7 @@ namespace rm_serial_driver
 // 0x stands for ring buffer msg received (4 - 5 for msg from pcb to nuc)
 // 1x stands for msg sent (11 - 20 for msg from nuc to pcb)
 // 2x stands for ring buffer msg sent (21 - 30 for msg from nuc to pcb)
-
+#define ID_NUM 17
 enum CommunicationType : uint8_t
 {
     BEAT_MSG                 = 0x01,
