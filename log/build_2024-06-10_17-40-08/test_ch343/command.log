@@ -1,2 +1,0 @@
-Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
-Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20

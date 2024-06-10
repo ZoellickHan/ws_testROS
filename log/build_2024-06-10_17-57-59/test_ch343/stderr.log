@@ -1,4 +1,0 @@
-[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
-[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:59:15:[m[K [01;35m[Kwarning: [m[K‘[01m[Kmemset[m[K’ used with length equal to number of elements without multiplication by element size [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmemset-elt-size-Wmemset-elt-size]8;;[m[K]
-   59 |         [01;35m[Kmemset(typing,0x00,ID_NUM)[m[K;
-      |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K

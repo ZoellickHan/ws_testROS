@@ -66,16 +66,11 @@ public:
     int  openPort();
     bool closePort();
     bool setBaudRate();
-    bool setFlowControl(bool isflowcontrol);
-
     bool reopen();
-    // int  receive();
+    
     int  transmit(std::vector<uint8_t> & buff);
     void registerType(int typeIDArray[ID_NUM], int num);    
-    int decode();
     int firstversion_receive();
-    template <typename T> 
-    void Classify(T& data);
 
     bool isPortInit();
     bool isPortOpen();
@@ -83,6 +78,13 @@ public:
     int& geterrorData(){return error_data_count;}
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
+    
+    // template <typename T> 
+    // void Classify(T& data);
+    // int decode();
+    // int  receive();
+    // bool setFlowControl(bool isflowcontrol);
+
 
 private:
     std::shared_ptr<SerialConfig> config;
@@ -104,10 +106,9 @@ private:
     uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
     
 
-    rm_serial_driver::Header header;
-    std::vector<uint8_t> transform;
     
-    // rm_serial_driver::Header header;
+    std::vector<uint8_t> transform;
+    rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
 

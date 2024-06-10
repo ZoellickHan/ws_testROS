@@ -380,7 +380,7 @@ int Port::firstversion_receive()
 				{
 					printf("run that\n");
 					memcpy(transform.data(),RxBuff+i,sizeof(header));
-					header = fromHeaderVector(transform);
+					header = fromVector<Header>(transform);
 					
 					switch (header.protocolID)
 					{
@@ -407,7 +407,7 @@ int Port::firstversion_receive()
 						transform.resize(sizeof(TwoCRC_GimbalMsg));
 						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
 						if(crc_ok){
-							twoCRC_GimbalMsg = fromTestVector<TwoCRC_GimbalMsg>(transform);
+							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
 							i+=sizeof(TwoCRC_GimbalMsg);
 						}else{
 							i+=sizeof(Header);
@@ -418,7 +418,7 @@ int Port::firstversion_receive()
 						printf("id : TWOCRC_SENTRY_GIMBAL_MSG \n");
 						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
 						if(crc_ok){
-							twoCRC_SentryGimbalMsg = fromTestVector<TwoCRC_SentryGimbalMsg>(transform);
+							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
 							i+=sizeof(TwoCRC_SentryGimbalMsg);
 						}else{
 							i+=sizeof(Header);
@@ -496,28 +496,28 @@ bool Port::closePort()
     return close(fd);
 }
 
-bool Port::setFlowControl(bool isFlowControl)
-{
-    struct termios newtio;
-	memset(&newtio, 0, sizeof(newtio));
+// bool Port::setFlowControl(bool isFlowControl)
+// {
+//     struct termios newtio;
+// 	memset(&newtio, 0, sizeof(newtio));
 
-    if (isFlowControl)
-		newtio.c_cflag |= CRTSCTS;
-	else
-		newtio.c_cflag &= ~CRTSCTS;
+//     if (isFlowControl)
+// 		newtio.c_cflag |= CRTSCTS;
+// 	else
+// 		newtio.c_cflag &= ~CRTSCTS;
 
-	newtio.c_cc[VTIME] = 10; /* Time-out value (tenths of a second) [!ICANON]. */
-	newtio.c_cc[VMIN] = 0;	 /* Minimum number of bytes read at once [!ICANON]. */
+// 	newtio.c_cc[VTIME] = 10; /* Time-out value (tenths of a second) [!ICANON]. */
+// 	newtio.c_cc[VMIN] = 0;	 /* Minimum number of bytes read at once [!ICANON]. */
 
-	tcflush(fd, TCIOFLUSH);
+// 	tcflush(fd, TCIOFLUSH);
 
-	if (tcsetattr(fd, TCSANOW, &newtio) != 0) 
-	{
-		perror("tcsetattr");
-		return false;
-	}
-    return true;
-}
+// 	if (tcsetattr(fd, TCSANOW, &newtio) != 0) 
+// 	{
+// 		perror("tcsetattr");
+// 		return false;
+// 	}
+//     return true;
+// }
 
 bool Port::reopen()
 {

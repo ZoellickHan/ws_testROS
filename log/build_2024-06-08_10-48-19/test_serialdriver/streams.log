@@ -1,6 +1,0 @@
-[0.007s] Invoking command in '/home/zoellickhan/Code/2024CV/testSerialDriver/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/testSerialDriver/ws_testROS/build/test_serialdriver -- -j20 -l20
-[0.011s] [0mCMake Error: The current CMakeCache.txt directory /home/zoellickhan/Code/2024CV/testSerialDriver/ws_testROS/build/test_serialdriver/CMakeCache.txt is different than the directory /home/zoellickhan/Code/2024CV/ws_testROS/build/test_serialdriver where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
-[0.017s] [0mCMake Error: The source directory "/home/zoellickhan/Code/2024CV/ws_testROS/src/test_serialdriver" does not exist.
-[0.017s] Specify --help for usage, or press the help button on the CMake GUI.[0m
-[0.018s] gmake: *** [Makefile:321: cmake_check_build_system] Error 1
-[0.019s] Invoked command in '/home/zoellickhan/Code/2024CV/testSerialDriver/ws_testROS/build/test_serialdriver' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/2024CV/testSerialDriver/ws_testROS/build/test_serialdriver -- -j20 -l20

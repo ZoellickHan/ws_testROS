@@ -1,4 +1,0 @@
-[0.007s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_serialdriver -- -j20 -l20
-[0.036s] [ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
-[1.979s] [ 50%] [32m[1mLinking CXX executable test_serialdriver[0m
-[2.059s] [100%] Built target test_serialdriver

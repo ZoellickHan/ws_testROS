@@ -1,3 +1,0 @@
-[ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
-[ 50%] [32m[1mLinking CXX executable test_serialdriver[0m
-[100%] Built target test_serialdriver

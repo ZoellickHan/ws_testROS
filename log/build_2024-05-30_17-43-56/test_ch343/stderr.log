@@ -1,7 +1,0 @@
-[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
-[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/test_read.cpp:55:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kgimbalmsg[m[K’ was not declared in this scope
-   55 |             [01;31m[Kgimbalmsg[m[K = fromVector(data);
-      |             [01;31m[K^~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:76: CMakeFiles/test_ch343.dir/src/test_read.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2
