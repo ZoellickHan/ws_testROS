@@ -60,16 +60,9 @@ int main(int argc, char **argv)
         else    
             port->reopen();
 
-
         printf("crc1:%d ,crc2:%d ,single: %d sum: %d \n",crcError_header,crcError_data,single,sum);
         printf("normal gimbal:%f \n",twoCRC_GimbalMsg.bullet_speed);
-        // printf("crc1: %d, sum: %ld  \n",crcError_header,sum_count);
         printf("two_sentry_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.bullet_speed);
-        // printf("two_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.cur_cv_mode);
-        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_w);
-        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_x);
-        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_y);
-        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_z);
     }   
 
 

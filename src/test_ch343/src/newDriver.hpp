@@ -4,8 +4,6 @@
 #include <future>
 #include <map>
 #include <memory>
-// #include <std_msgs/msg/float64.hpp>
-// #include <std_srvs/srv/trigger.hpp>
 #include <string>
 #include <thread>
 #include <vector>
@@ -15,7 +13,6 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
-#define DANGEROUS 150
 namespace newSerialDriver
 {
 
@@ -68,8 +65,7 @@ public:
     bool setBaudRate();
     bool reopen();
     
-    int  transmit(std::vector<uint8_t> & buff);
-    void registerType(int typeIDArray[ID_NUM], int num);    
+    int  transmit(std::vector<uint8_t> & buff);   
     int firstversion_receive();
 
     bool isPortInit();
@@ -78,25 +74,15 @@ public:
     int& geterrorData(){return error_data_count;}
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
-    
-    // template <typename T> 
-    // void Classify(T& data);
-    // int decode();
-    // int  receive();
-    // bool setFlowControl(bool isflowcontrol);
-
-
+    rm_serial_driver::GimbalMsg& getGimbalMsg(){return gimbalMsg;}
+    rm_serial_driver::SentryGimbalMsg& getSentryGimbalMsg(){return sentryGimbalMsg;}
 private:
     std::shared_ptr<SerialConfig> config;
 
     int fd;
     int num_per_read     = 0;
     int num_per_write    = 0;
-    // int putinIndex       = 0; 
-	// int putoutIndex	     = 0;
 
-    // bool handshake;
-    int decodeCorrectNum = 0;
     bool crc_ok_header = false;
     bool crc_ok = false;
     bool isinit = false;
@@ -105,13 +91,12 @@ private:
     uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
     
-
-    
     std::vector<uint8_t> transform;
     rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
-
+    rm_serial_driver::GimbalMsg gimbalMsg;
+    rm_serial_driver::SentryGimbalMsg sentryGimbalMsg;
     int error_header_count;
     int error_data_count;
   

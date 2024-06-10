@@ -238,128 +238,6 @@ int Port::openPort()
 	return fd;
 }
 
-// void printHexValues(const std::vector<uint8_t>& vec) {
-//     for (auto num : vec) {
-//         printf("%02X ", num);
-//     }
-//     printf("\n");
-// }
-
-void Port::registerType(int typeIDArray[ID_NUM],int num)
-{
-	for(int i=0;i<ID_NUM;i++)
-	{
-		interestID[i] = typeIDArray[i];
-	}
-}
-
-/**
- *  Receive the data
-*/
-
-// int  Port::decode()
-// {	
-	
-// 	int SIZE;
-
-// 	transform.resize(sizeof(Header));
-// 	for(int i = putoutIndex; putoutIndex + sizeof(Header) <= putinIndex; i++ )
-// 	{
-// 		if(RxBuff[i] != 0xAA) continue;
-	
-// 		putoutIndex = i;
-
-// 		if((putoutIndex + transform.size()) < putinIndex)
-// 			memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
-// 		else
-// 		{	
-// 			memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
-// 			memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
-// 		}
-			
-// 		header = fromHeaderVector(transform);
-// 		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
-
-		
-// 		if(crc_ok_header)
-// 		{
-// 			for(int j : interestID)
-// 			{
-// 				switch (j)
-// 				{
-// 				case GIMBAL_MSG:					
-// 					break;
-				
-// 				case CHASSIS_MSG:
-// 					break;
-// 				case SENTRY_GIMBAL_MSG:
-// 					break;
-// 				case FIELD_MSG:
-// 					break;
-
-
-// 				case TWOCRC_GIMBAL_MSG:
-// 					Classify(twoCRC_GimbalMsg);
-// 					SIZE  = sizeof(twoCRC_GimbalMsg);
-// 					break;
-// 				case TWOCRC_CHASSIS_MSG:
-// 					break;
-// 				case TWOCRC_SENTRY_GIMBAL_MSG:
-// 					Classify(twoCRC_SentryGimbalMsg);
-// 					SIZE = sizeof(twoCRC_SentryGimbalMsg);
-// 					break;
-// 				case TWOCRC_FIELD_MSG:
-// 					break;
-// 				default:
-// 					break;
-// 				}
-// 			}
-// 		}
-// 		else
-// 		{
-// 			printf("error in header \n");
-// 			error_header_count++;
-// 		}
-			
-	
-// 		putoutIndex += SIZE;
-// 		putoutIndex = putoutIndex>ROSCOMM_BUFFER_SIZE ? putoutIndex%ROSCOMM_BUFFER_SIZE : putoutIndex;
-
-// 		i += SIZE;
-// 	}
-// 	return decodeCorrectNum;
-// }
-
-// template <typename T>
-// void Port::Classify(T &data)
-// {
-// 	T buffer;
-// 	transform.resize(sizeof(T));
-
-// 	if((putoutIndex + transform.size()) < putinIndex)
-// 		memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
-// 	else
-// 	{
-// 		memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
-// 		memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
-// 	}
-// 	buffer = fromTestVector<T>(transform);
-
-// 	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&buffer), sizeof(T));
-
-// 	if(crc_ok)
-// 	{
-// 		data = buffer;
-// 	}
-		
-// 	else
-// 	{
-// 		printf("error in data \n");
-// 		error_data_count ++;
-// 	}
-		
-// }
-
 int Port::firstversion_receive()
 {
 	num_per_read = read(fd,RxBuff,sizeof(RxBuff));
@@ -374,6 +252,38 @@ int Port::firstversion_receive()
 			// printf("run this\n");
 			if(RxBuff[i] == 0xAA)
 			{	
+				switch (RxBuff[i+2])
+				{
+				case CommunicationType::FIELD_MSG :
+					i++;
+					break;
+				case CommunicationType::GIMBAL_MSG :
+					transform.resize(sizeof(GimbalMsg));
+					crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(GimbalMsg));
+					if(crc_ok)
+					{
+						gimbalMsg = fromVector<GimbalMsg>(transform);
+					}else{
+						error_data_count++;
+					}
+					i+=sizeof(GimbalMsg);				
+					i++;
+					break;
+				case CommunicationType::SENTRY_GIMBAL_MSG :
+					transform.resize(sizeof(SentryGimbalMsg));
+					crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(SentryGimbalMsg));
+					if(crc_ok)
+					{
+						sentryGimbalMsg = fromVector<SentryGimbalMsg>(transform);
+					}else{
+						error_data_count++;
+					}
+					i+=sizeof(SentryGimbalMsg);
+					break;
+				default:
+					i++;
+					break;
+				}
 				transform.resize(sizeof(Header));
 				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
 				if(crc_ok_header)
@@ -384,22 +294,12 @@ int Port::firstversion_receive()
 					
 					switch (header.protocolID)
 					{
-					case CommunicationType::CHASSIS_MSG :
-						i++;
-						break;
-					case CommunicationType::FIELD_MSG :
-						i++;
-						break;
-					case CommunicationType::GIMBAL_MSG :
-						i++;
-						break;
-					case CommunicationType::SENTRY_GIMBAL_MSG :
-						i++;
-						break;
 					case CommunicationType::TWOCRC_CHASSIS_MSG :
+						/*not define*/
 						i++;
 						break;
 					case CommunicationType::TWOCRC_FIELD_MSG :
+						/*not define*/
 						i++;
 						break;
 					case CommunicationType::TWOCRC_GIMBAL_MSG :
@@ -446,34 +346,6 @@ int Port::firstversion_receive()
 	}
 }
 
-// int Port::receive()
-// {   
-// 	if(ROSCOMM_BUFFER_SIZE - putinIndex < DANGEROUS)
-// 	{
-// 		num_per_read = read(fd,RxBuff,sizeof(RxBuff));
-// 		putinIndex = 0;
-// 	}
-// 	else
-// 	{
-// 		num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
-// 	}	
-
-// 	if(num_per_read > 0)
-// 	{	
-// 		sum += num_per_read;	
-// 		putinIndex += num_per_read;
-// 		putinIndex = putinIndex > ROSCOMM_BUFFER_SIZE ? putinIndex%ROSCOMM_BUFFER_SIZE : putinIndex ;
-		
-// 		printf("haha receive[single:%d ,putinIndex:%d] \n",num_per_read,putinIndex);
-//     	return num_per_read;	
-// 	}
-// 	else
-// 	{
-// 		return -1;
-// 	}
-// }
-		
-
 /**
  *  Transmit the data
 */
@@ -495,29 +367,6 @@ bool Port::closePort()
 {
     return close(fd);
 }
-
-// bool Port::setFlowControl(bool isFlowControl)
-// {
-//     struct termios newtio;
-// 	memset(&newtio, 0, sizeof(newtio));
-
-//     if (isFlowControl)
-// 		newtio.c_cflag |= CRTSCTS;
-// 	else
-// 		newtio.c_cflag &= ~CRTSCTS;
-
-// 	newtio.c_cc[VTIME] = 10; /* Time-out value (tenths of a second) [!ICANON]. */
-// 	newtio.c_cc[VMIN] = 0;	 /* Minimum number of bytes read at once [!ICANON]. */
-
-// 	tcflush(fd, TCIOFLUSH);
-
-// 	if (tcsetattr(fd, TCSANOW, &newtio) != 0) 
-// 	{
-// 		perror("tcsetattr");
-// 		return false;
-// 	}
-//     return true;
-// }
 
 bool Port::reopen()
 {

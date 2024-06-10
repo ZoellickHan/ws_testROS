@@ -68,6 +68,7 @@ struct Header
     uint8_t protocolID = 0;
     uint8_t crc_1;
     uint8_t crc_2;
+    
 } __attribute__((packed));
 
 struct TwoCRC_GimbalMsg  // TWOCRC_GIMBAL_MSG, also 0xA2
@@ -153,6 +154,8 @@ struct TwoCRC_ActionCommand  // TWOCRC_ACTION_CMD, also 0xB3
 
 struct TwoCRC_SentryGimbalCommand
 {
+    Header header;
+
     float l_target_pitch;
     float l_target_yaw;
     uint8_t l_shoot_mode;
@@ -163,43 +166,11 @@ struct TwoCRC_SentryGimbalCommand
 
     float main_target_pitch;
     float main_target_yaw;
+
+    uint8_t crc_3;
+    uint8_t crc_4;
+
 } __attribute__((packed));
-
-inline Header fromHeaderVector(const std::vector<uint8_t> &data)
-{
-    Header received_packet;
-    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
-    return received_packet;
-}
-
-inline TwoCRC_GimbalMsg fromTwoCRCVector(const std::vector<uint8_t> &data)
-{
-    TwoCRC_GimbalMsg received_packet;
-    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
-    return received_packet;
-}
-
-inline std::vector<uint8_t> toTwoCRCVector(const TwoCRC_GimbalCommand &data)
-{
-    std::vector<uint8_t> sent_packet(sizeof(TwoCRC_GimbalCommand));
-    std::copy(reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(TwoCRC_GimbalCommand), sent_packet.begin());
-    return sent_packet;
-}
-
-inline TwoCRC_SentryGimbalMsg fromSentryTwoCRCVector(const std::vector<uint8_t> &data)
-{
-    TwoCRC_SentryGimbalMsg received_packet;
-    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
-    return received_packet;
-}
-
-inline std::vector<uint8_t> toSentryTwoCRCVectorChassis(const TwoCRC_ChassisCommand &data)
-{
-    std::vector<uint8_t> sent_packet(sizeof(TwoCRC_ChassisCommand));
-    std::copy(
-        reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(TwoCRC_ChassisCommand), sent_packet.begin());
-    return sent_packet;
-}
 
 template <typename T>
 inline T fromVector(const std::vector<uint8_t> &data)
@@ -210,7 +181,7 @@ inline T fromVector(const std::vector<uint8_t> &data)
 }
 
 template <typename T>
-inline std::vector<uint8_t> toTwoCRCVector(const T &data)
+inline std::vector<uint8_t> toVector(const T &data)
 {
     std::vector<uint8_t> sent_packet(sizeof(T));
     std::copy(reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(T), sent_packet.begin());
