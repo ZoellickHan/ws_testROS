@@ -71,8 +71,8 @@ int main(int argc, char **argv)
         twoCRC_ChassisCommand.vel_y = 0.5;  
         Append_CRC16_Check_Sum(reinterpret_cast<uint8_t *>(&twoCRC_ChassisCommand), sizeof(TwoCRC_ChassisCommand));
 
-        std::vector<uint8_t> data1 = toTwoCRCVector(twoCRC_GimbalCommand);
-        std::vector<uint8_t> data2 = toSentryTwoCRCVectorChassis(twoCRC_ChassisCommand);
+        std::vector<uint8_t> data1 = toVector(twoCRC_GimbalCommand);
+        std::vector<uint8_t> data2 = toVector(twoCRC_ChassisCommand);
         
         single = port->transmit(data1);
         if(single < 0){

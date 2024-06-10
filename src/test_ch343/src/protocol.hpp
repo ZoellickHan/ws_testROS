@@ -68,7 +68,7 @@ struct Header
     uint8_t protocolID = 0;
     uint8_t crc_1;
     uint8_t crc_2;
-    
+
 } __attribute__((packed));
 
 struct TwoCRC_GimbalMsg  // TWOCRC_GIMBAL_MSG, also 0xA2
@@ -171,22 +171,6 @@ struct TwoCRC_SentryGimbalCommand
     uint8_t crc_4;
 
 } __attribute__((packed));
-
-template <typename T>
-inline T fromVector(const std::vector<uint8_t> &data)
-{
-    T received_packet;
-    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
-    return received_packet;
-}
-
-template <typename T>
-inline std::vector<uint8_t> toVector(const T &data)
-{
-    std::vector<uint8_t> sent_packet(sizeof(T));
-    std::copy(reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(T), sent_packet.begin());
-    return sent_packet;
-}
 
 // *********************************//
 // * protocol without ring buffer * //
@@ -330,7 +314,21 @@ struct ActionCommand
     uint8_t crc_2;
 } __attribute__((packed));
 
+template <typename T>
+inline T fromVector(const std::vector<uint8_t> &data)
+{
+    T received_packet;
+    std::copy(data.begin(), data.end(), reinterpret_cast<uint8_t *>(&received_packet));
+    return received_packet;
+}
 
+template <typename T>
+inline std::vector<uint8_t> toVector(const T &data)
+{
+    std::vector<uint8_t> sent_packet(sizeof(T));
+    std::copy(reinterpret_cast<const uint8_t *>(&data), reinterpret_cast<const uint8_t *>(&data) + sizeof(T), sent_packet.begin());
+    return sent_packet;
+}
 }  // namespace rm_serial_driver
 
 #endif  // RM_SERIAL_DRIVER__PROTOCOL_HPP_

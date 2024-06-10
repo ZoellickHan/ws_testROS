@@ -4,17 +4,15 @@
 #include <future>
 #include <map>
 #include <memory>
-// #include <std_msgs/msg/float64.hpp>
-// #include <std_srvs/srv/trigger.hpp>
 #include <string>
 #include <thread>
 #include <vector>
 #include <atomic>
 
-// C system
+#include "protocol.hpp"
+#include "crc.hpp" 
 
-#define USE_CH343_DRIVER 1
-#if USE_CH343_DRIVER
+#define ROSCOMM_BUFFER_SIZE 2048
 namespace newSerialDriver
 {
 
@@ -60,40 +58,46 @@ class Port
 public:
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
-    //TEST
-    void test_receive();
-    int test_transmit();
-    long getNumRead(){return num_read;}
-    long getNumWrite(){return num_write;}
-    int getErrorCount(){return error_count;}
 
-    bool reopen();
     bool init();
-    bool isPortInit();
     int  openPort();
-    bool isPortOpen();
     bool closePort();
-    int  receive(std::vector<uint8_t> & buff);
-    int  transmit(std::vector<uint8_t> & buff);
-    bool setBaudRate();
-    bool setFlowControl(bool isflowcontrol);
+    bool reopen();
+
+    int  transmit(std::vector<uint8_t> & buff);   
+    int firstversion_receive();
+
+    bool isPortInit();
+    bool isPortOpen();
+    int& geterrorHeader(){return error_header_count ;}
+    int& geterrorData(){return error_data_count;}
+    rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
+    rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
+    rm_serial_driver::GimbalMsg& getGimbalMsg(){return gimbalMsg;}
+    rm_serial_driver::SentryGimbalMsg& getSentryGimbalMsg(){return sentryGimbalMsg;}
 
 private:
     std::shared_ptr<SerialConfig> config;
-
     int fd;
-    int num_per_read     =0;
-    int error_count      =0;
-    int num_per_write    =0;
-	long num_read        =0;
-    long num_write       =0;
+    int num_per_read        = 0;
+    int num_per_write       = 0;
+    int error_header_count  = 0;
+    int error_data_count    = 0;
 
-    bool handshake;
-    bool isinit = false;
-    bool isopen = false;
-    uint8_t RxBuff[2048];
-    uint8_t TxBuff[2048];
+    bool crc_ok_header   = false;
+    bool crc_ok          = false;
+    bool isinit          = false;
+    bool isopen          = false;
+
+    uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
+    uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
+    
+    std::vector<uint8_t> transform;
+    rm_serial_driver::Header header;
+    rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
+    rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
+    rm_serial_driver::GimbalMsg gimbalMsg;
+    rm_serial_driver::SentryGimbalMsg sentryGimbalMsg;
 };
 
 }//newSerialDriver
-#endif

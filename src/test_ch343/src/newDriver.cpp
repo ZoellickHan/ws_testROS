@@ -33,44 +33,6 @@ Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 	memset(RxBuff ,0x00, ROSCOMM_BUFFER_SIZE);
 }
 
-Port::~Port(){}
-
-SerialConfig::~SerialConfig(){}
-
-
-/**
- * do not use this directly 
-*/
-bool Port::setBaudRate()
-{
-    struct termios2 tio;
-
-	if (ioctl(fd, TCGETS2, &tio))
-	{
-		perror("TCGETS2");
-		return false;
-	}
-
-	tio.c_cflag &= ~CBAUD;
-	tio.c_cflag |= BOTHER;
-	tio.c_ispeed = config->baudrate;
-	tio.c_ospeed = config->baudrate;
-
-	if (ioctl(fd, TCSETS2, &tio)) 
-	{
-		perror("TCSETS2");
-		return false;
-	}
-
-	if (ioctl(fd, TCGETS2, &tio)) 
-	{
-		perror("TCGETS2");
-		return false;
-	} 
-
-	return true;
-}
-
 /**
  * use this to init the port at first, then open
 */
@@ -405,5 +367,8 @@ bool Port::isPortOpen()
 	else
 		return false;
 }
+
+Port::~Port(){}
+SerialConfig::~SerialConfig(){}
 
 }//newSerialDriver
