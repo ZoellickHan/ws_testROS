@@ -214,38 +214,38 @@ int Port::firstversion_receive()
 			// printf("run this\n");
 			if(RxBuff[i] == 0xAA)
 			{	
-				switch (RxBuff[i+2])
-				{
-				case CommunicationType::FIELD_MSG :
-					i++;
-					break;
-				case CommunicationType::GIMBAL_MSG :
-					transform.resize(sizeof(GimbalMsg));
-					crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(GimbalMsg));
-					if(crc_ok)
-					{
-						gimbalMsg = fromVector<GimbalMsg>(transform);
-					}else{
-						error_data_count++;
-					}
-					i+=sizeof(GimbalMsg);				
-					i++;
-					break;
-				case CommunicationType::SENTRY_GIMBAL_MSG :
-					transform.resize(sizeof(SentryGimbalMsg));
-					crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(SentryGimbalMsg));
-					if(crc_ok)
-					{
-						sentryGimbalMsg = fromVector<SentryGimbalMsg>(transform);
-					}else{
-						error_data_count++;
-					}
-					i+=sizeof(SentryGimbalMsg);
-					break;
-				default:
-					i++;
-					break;
-				}
+				// switch (RxBuff[i+2])
+				// {
+				// case CommunicationType::FIELD_MSG :
+				// 	i++;
+				// 	break;
+				// case CommunicationType::GIMBAL_MSG :
+				// 	transform.resize(sizeof(GimbalMsg));
+				// 	crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(GimbalMsg));
+				// 	if(crc_ok)
+				// 	{
+				// 		gimbalMsg = fromVector<GimbalMsg>(transform);
+				// 	}else{
+				// 		error_data_count++;
+				// 	}
+				// 	i+=sizeof(GimbalMsg);				
+				// 	i++;
+				// 	break;
+				// case CommunicationType::SENTRY_GIMBAL_MSG :
+				// 	transform.resize(sizeof(SentryGimbalMsg));
+				// 	crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(SentryGimbalMsg));
+				// 	if(crc_ok)
+				// 	{
+				// 		sentryGimbalMsg = fromVector<SentryGimbalMsg>(transform);
+				// 	}else{
+				// 		error_data_count++;
+				// 	}
+				// 	i+=sizeof(SentryGimbalMsg);
+				// 	break;
+				// default:
+				// 	i++;
+				// 	break;
+				// }
 				transform.resize(sizeof(Header));
 				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
 				if(crc_ok_header)
@@ -267,23 +267,29 @@ int Port::firstversion_receive()
 					case CommunicationType::TWOCRC_GIMBAL_MSG :
 						printf("id : TWOCRC_GIMBAL_MSG \n");
 						transform.resize(sizeof(TwoCRC_GimbalMsg));
-						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
+						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_GimbalMsg));
 						if(crc_ok){
+							transform.resize(sizeof(TwoCRC_GimbalMsg));
+							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
 							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
 							i+=sizeof(TwoCRC_GimbalMsg);
+							decodeCount++;
 						}else{
-							i+=sizeof(Header);
+							i+=sizeof(TwoCRC_GimbalMsg);
 							error_data_count ++;
 						}
 						break;
 					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
 						printf("id : TWOCRC_SENTRY_GIMBAL_MSG \n");
-						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
 						if(crc_ok){
+							transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
+							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
 							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
 							i+=sizeof(TwoCRC_SentryGimbalMsg);
+							decodeCount++;
 						}else{
-							i+=sizeof(Header);
+							i+=sizeof(TwoCRC_SentryGimbalMsg);
 							error_data_count ++;
 						}					
 						break;
