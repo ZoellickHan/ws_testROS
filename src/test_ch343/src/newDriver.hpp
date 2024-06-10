@@ -15,6 +15,7 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
+#define DANGEROUS 150
 namespace newSerialDriver
 {
 
@@ -68,18 +69,18 @@ public:
     bool setFlowControl(bool isflowcontrol);
 
     bool reopen();
-    int  receive();
+    // int  receive();
     int  transmit(std::vector<uint8_t> & buff);
-    void registerType(int typeIDArray[ID_NUM], int num);
-
-    template <typename T>
+    void registerType(int typeIDArray[ID_NUM], int num);    
     int decode();
-
+    int firstversion_receive();
     template <typename T> 
     void Classify(T& data);
 
     bool isPortInit();
     bool isPortOpen();
+    int& geterrorHeader(){return error_header_count ;}
+    int& geterrorData(){return error_data_count;}
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
 
@@ -89,26 +90,31 @@ private:
     int fd;
     int num_per_read     = 0;
     int num_per_write    = 0;
-    int error_count      = 0;
-    int putinIndex       = 0; 
-	int putoutIndex	     = 0;
+    // int putinIndex       = 0; 
+	// int putoutIndex	     = 0;
 
-    bool handshake;
+    // bool handshake;
     int decodeCorrectNum = 0;
     bool crc_ok_header = false;
     bool crc_ok = false;
     bool isinit = false;
     bool isopen = false;
     int interestID[ID_NUM];
-    uint8_t RxBuff[ROSCOMM_BUFFER_SIZE];
-    uint8_t TxBuff[ROSCOMM_BUFFER_SIZE];
+    uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
+    uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
+    
 
     rm_serial_driver::Header header;
     std::vector<uint8_t> transform;
-
+    
+    // rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
 
+    int error_header_count;
+    int error_data_count;
+  
+    long  sum;
 };
 
 }//newSerialDriver

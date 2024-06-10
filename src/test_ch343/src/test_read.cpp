@@ -16,11 +16,6 @@ struct timespec ts1;
 
 int    single       = 0;
 int    sum          = 0;
-
-int    okbag;
-int    crcError     = 0;
-int    errorCounter = 0;
-double errorRate    = 0;
 double last_time    = 0;
 double period       = 0;
 double throughput   = 0;
@@ -44,9 +39,6 @@ void printHexValues(const std::vector<uint8_t>& vec) {
 
 int main(int argc, char **argv)
 {
-    rm_serial_driver::TwoCRC_GimbalMsg&  twoCRC_GimbalMsg = port->getTwoCRC_GimbalMsg();
-    rm_serial_driver::TwoCRC_SentryGimbalMsg& twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
-
     rclcpp::init(argc, argv);
     auto node = std::make_shared<rclcpp::Node>("testing");
     RCLCPP_INFO(node->get_logger(), "Start ch343 in node testing.");
@@ -54,21 +46,32 @@ int main(int argc, char **argv)
     port->openPort();
     port->init();
     
-    clock_gettime(CLOCK_MONOTONIC, &ts1);
-    last_time = ts1.tv_sec;
+    rm_serial_driver::TwoCRC_GimbalMsg&  twoCRC_GimbalMsg = port->getTwoCRC_GimbalMsg();
+    rm_serial_driver::TwoCRC_SentryGimbalMsg& twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
+    int& crcError_header  = port->geterrorHeader();
+    int& crcError_data    = port->geterrorData();
+    // clock_gettime(CLOCK_MONOTONIC, &ts1);
+    // last_time = ts1.tv_sec;
 
     while(true)
     {
-        int typing[ID_NUM];
-        memset(typing,0x00,ID_NUM);
-        typing[0] = TWOCRC_GIMBAL_MSG;
-        typing[1] = TWOCRC_SENTRY_GIMBAL_MSG;
 
-        port->registerType(typing,2);
-        single = port->receive();
-        
-        printf("two_gimbal 1: %f \n",twoCRC_GimbalMsg.bullet_speed);
-        printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.bullet_speed);
+        single = port->firstversion_receive();
+        if(single >0)
+            sum += single;
+        else    
+            port->reopen();
+
+
+        printf("crc1:%d ,crc2:%d ,single: %d sum: %d \n",crcError_header,crcError_data,single,sum);
+        printf("normal gimbal:%f \n",twoCRC_GimbalMsg.bullet_speed);
+        // printf("crc1: %d, sum: %ld  \n",crcError_header,sum_count);
+        printf("two_sentry_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.bullet_speed);
+        // printf("two_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.cur_cv_mode);
+        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_w);
+        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_x);
+        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_y);
+        // printf("two_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_z);
     }   
 
 

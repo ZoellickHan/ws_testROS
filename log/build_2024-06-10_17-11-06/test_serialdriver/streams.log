@@ -1,0 +1,25 @@
+[0.007s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_serialdriver -- -j20 -l20
+[0.074s] [ 25%] [32mBuilding CXX object CMakeFiles/test_serialdriver.dir/src/test_write.cpp.o[0m
+[1.866s] [ 50%] [32m[1mLinking CXX executable test_serialdriver[0m
+[1.965s] [100%] Built target test_serialdriver
+[1.983s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_serialdriver -- -j20 -l20
+[2.034s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_serialdriver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_serialdriver
+[2.046s] -- Install configuration: ""
+[2.046s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/package_run_dependencies/test_serialdriver
+[2.046s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/parent_prefix_path/test_serialdriver
+[2.046s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/ament_prefix_path.sh
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/ament_prefix_path.dsv
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/path.sh
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/environment/path.dsv
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.bash
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.sh
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.zsh
+[2.047s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/local_setup.dsv
+[2.048s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/package.dsv
+[2.048s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/ament_index/resource_index/packages/test_serialdriver
+[2.048s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/cmake/test_serialdriverConfig.cmake
+[2.048s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/cmake/test_serialdriverConfig-version.cmake
+[2.048s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/share/test_serialdriver/package.xml
+[2.048s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_serialdriver/lib/test_serialdriver/test_serialdriver
+[2.049s] -- Set runtime path of "/home/zoellickhan/Code/ws_testROS/install/test_serialdriver/lib/test_serialdriver/test_serialdriver" to ""
+[2.051s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_serialdriver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_serialdriver

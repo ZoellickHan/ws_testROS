@@ -39,10 +39,10 @@ int main(int argc, char **argv)
 {
 
     twoCRC_ChassisCommand.header.dataLen = sizeof(TwoCRC_ChassisCommand) - sizeof(Header) - 2;
-    twoCRC_ChassisCommand.header.protocolID = 0x21;
+    twoCRC_ChassisCommand.header.protocolID = 0xB2;
 
     twoCRC_GimbalCommand.header.dataLen = sizeof(TwoCRC_GimbalCommand) - sizeof(Header) - 2;
-    twoCRC_GimbalCommand.header.protocolID = 0x20;
+    twoCRC_GimbalCommand.header.protocolID = 0xB3;
 
 
     rclcpp::init(argc, argv);
@@ -57,9 +57,11 @@ int main(int argc, char **argv)
 
     for(int i =0; 1==1; i++)
     {
+        // std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        
         Append_CRC16_Check_Sum(reinterpret_cast<uint8_t *>(&twoCRC_GimbalCommand.header), 5);
         Append_CRC16_Check_Sum(reinterpret_cast<uint8_t *>(&twoCRC_ChassisCommand.header), sizeof(Header));
-        twoCRC_GimbalCommand.shoot_mode = i%99 ;
+        twoCRC_GimbalCommand.shoot_mode = i%99;
         twoCRC_GimbalCommand.target_pitch = 0.4;
         twoCRC_GimbalCommand.target_yaw = 0.5;
         Append_CRC16_Check_Sum(reinterpret_cast<uint8_t *>(&twoCRC_GimbalCommand), 16);
@@ -77,23 +79,26 @@ int main(int argc, char **argv)
             if(port->reopen()) printf("reopen correctly \n");
             else printf("reopen failed \n");
         }
-        sum += single;
-        writeCount ++;
-
-        single = port->transmit(data2);
-        if(single < 0){
-            if(port->reopen()) printf("reopen correctly \n");
-            else printf("reopen failed \n");
+        else{
+            sum += single;
+            writeCount ++;
         }
-        sum += single;
-        writeCount ++;
+       
+
+        // single = port->transmit(data2);
+        // if(single < 0){
+        //     if(port->reopen()) printf("reopen correctly \n");
+        //     else printf("reopen failed \n");
+        // }
+        // sum += single;
+        // writeCount ++;
 
         clock_gettime(CLOCK_MONOTONIC, &ts2);
         period = ts2.tv_sec - last_time;
         
         if(period != 0) throughput = sum/period;
 
-        printf("time: %f, throuhtput: %f , transmit times: %d \n",period,throughput,writeCount);
+        printf("time: %f, throuhtput: %f , transmit times: %d, hz:%f \n",period,throughput,writeCount, (float)writeCount/(float)period);
         printf("transmit in total : %d \n", sum);
         printf("data length :%d \n",twoCRC_GimbalCommand.header.dataLen);
         printf("sum: %d,singel :%d, crc1 = %d  crc2 = %d crc3 = %d crc = %d \n",sum,single,twoCRC_GimbalCommand.header.crc_1,twoCRC_GimbalCommand.header.crc_2,twoCRC_GimbalCommand.crc_3,twoCRC_GimbalCommand.crc_4);

@@ -256,104 +256,223 @@ void Port::registerType(int typeIDArray[ID_NUM],int num)
 /**
  *  Receive the data
 */
-template <typename T>
-int  Port::decode()
-{	
-	transform.resize(sizeof(Header));
-	for(int i = putoutIndex; putoutIndex + sizeof(Header) <= putinIndex; i++ )
-	{
-		if(RxBuff[i] != 0xAA) continue;
-		putoutIndex = i;
 
-		if((putoutIndex + transform.size()) < putinIndex)
-			memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
-		else
-		{
-			memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
-			memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
-		}
+// int  Port::decode()
+// {	
+	
+// 	int SIZE;
+
+// 	transform.resize(sizeof(Header));
+// 	for(int i = putoutIndex; putoutIndex + sizeof(Header) <= putinIndex; i++ )
+// 	{
+// 		if(RxBuff[i] != 0xAA) continue;
+	
+// 		putoutIndex = i;
+
+// 		if((putoutIndex + transform.size()) < putinIndex)
+// 			memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
+// 		else
+// 		{	
+// 			memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
+// 			memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+// 		}
 			
-		header = fromHeaderVector(transform);
-		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
+// 		header = fromHeaderVector(transform);
+// 		crc_ok_header = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&header), sizeof(header));
 
 		
-		if(crc_ok_header)
-		{
-			for(int j : interestID)
-			{
-				switch (j)
-				{
-				case GIMBAL_MSG:					
-					break;
+// 		if(crc_ok_header)
+// 		{
+// 			for(int j : interestID)
+// 			{
+// 				switch (j)
+// 				{
+// 				case GIMBAL_MSG:					
+// 					break;
 				
-				case CHASSIS_MSG:
-					break;
-				case SENTRY_GIMBAL_MSG:
-					break;
-				case FIELD_MSG:
-					break;
+// 				case CHASSIS_MSG:
+// 					break;
+// 				case SENTRY_GIMBAL_MSG:
+// 					break;
+// 				case FIELD_MSG:
+// 					break;
 
 
-				case TWOCRC_GIMBAL_MSG:
-					Classify(twoCRC_GimbalMsg);
-					break;
-				case TWOCRC_CHASSIS_MSG:
-					break;
-				case TWOCRC_SENTRY_GIMBAL_MSG:
-					Classify(twoCRC_SentryGimbalMsg);
-					break;
-				case TWOCRC_FIELD_MSG:
-					break;
-				default:
-					break;
-				}
-			}
-		}
+// 				case TWOCRC_GIMBAL_MSG:
+// 					Classify(twoCRC_GimbalMsg);
+// 					SIZE  = sizeof(twoCRC_GimbalMsg);
+// 					break;
+// 				case TWOCRC_CHASSIS_MSG:
+// 					break;
+// 				case TWOCRC_SENTRY_GIMBAL_MSG:
+// 					Classify(twoCRC_SentryGimbalMsg);
+// 					SIZE = sizeof(twoCRC_SentryGimbalMsg);
+// 					break;
+// 				case TWOCRC_FIELD_MSG:
+// 					break;
+// 				default:
+// 					break;
+// 				}
+// 			}
+// 		}
+// 		else
+// 		{
+// 			printf("error in header \n");
+// 			error_header_count++;
+// 		}
+			
+	
+// 		putoutIndex += SIZE;
+// 		putoutIndex = putoutIndex>ROSCOMM_BUFFER_SIZE ? putoutIndex%ROSCOMM_BUFFER_SIZE : putoutIndex;
 
-		putoutIndex += sizeof(T);
-		putoutIndex = putoutIndex>ROSCOMM_BUFFER_SIZE ? putoutIndex%ROSCOMM_BUFFER_SIZE : putoutIndex;
+// 		i += SIZE;
+// 	}
+// 	return decodeCorrectNum;
+// }
 
-		i += sizeof(T);
-	}
-	return decodeCorrectNum;
-}
+// template <typename T>
+// void Port::Classify(T &data)
+// {
+// 	T buffer;
+// 	transform.resize(sizeof(T));
 
-template <typename T>
-void Port::Classify(T &data)
+// 	if((putoutIndex + transform.size()) < putinIndex)
+// 		memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
+// 	else
+// 	{
+// 		memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
+// 		memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
+// 	}
+// 	buffer = fromTestVector<T>(transform);
+
+// 	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&buffer), sizeof(T));
+
+// 	if(crc_ok)
+// 	{
+// 		data = buffer;
+// 	}
+		
+// 	else
+// 	{
+// 		printf("error in data \n");
+// 		error_data_count ++;
+// 	}
+		
+// }
+
+int Port::firstversion_receive()
 {
-	T buffer;
-	transform.resize(sizeof(T));
-
-	if((putoutIndex + transform.size()) < putinIndex)
-		memcpy(transform.data(), RxBuff + putoutIndex, transform.size());
-	else
-	{
-		memcpy(transform.data(),RxBuff + putinIndex, ROSCOMM_BUFFER_SIZE - putoutIndex);
-		memcpy(transform.data(),RxBuff,(putoutIndex+transform.size())%ROSCOMM_BUFFER_SIZE);
-	}
-	buffer = fromTestVector<T>(transform);
-
-	crc_ok = Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&buffer), sizeof(T));
-
-	if(crc_ok)
-	{
-		memcpy(data,buffer,sizeof(buffer));
-	} 
-}
-
-int Port::receive()
-{   
-	num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
+	num_per_read = read(fd,RxBuff,sizeof(RxBuff));
 
 	if(num_per_read > 0)
-	{		
-		putinIndex += num_per_read;
-		putinIndex = putinIndex > ROSCOMM_BUFFER_SIZE ? putinIndex%ROSCOMM_BUFFER_SIZE : putinIndex ;
-    	return num_per_read;
-	}
-	else
+	{	
+		printf("run this\n");
+		transform.reserve(150);
+		int i=0;
+		while (i < num_per_read)
+		{
+			// printf("run this\n");
+			if(RxBuff[i] == 0xAA)
+			{	
+				transform.resize(sizeof(Header));
+				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
+				if(crc_ok_header)
+				{
+					printf("run that\n");
+					memcpy(transform.data(),RxBuff+i,sizeof(header));
+					header = fromHeaderVector(transform);
+					
+					switch (header.protocolID)
+					{
+					case CommunicationType::CHASSIS_MSG :
+						i++;
+						break;
+					case CommunicationType::FIELD_MSG :
+						i++;
+						break;
+					case CommunicationType::GIMBAL_MSG :
+						i++;
+						break;
+					case CommunicationType::SENTRY_GIMBAL_MSG :
+						i++;
+						break;
+					case CommunicationType::TWOCRC_CHASSIS_MSG :
+						i++;
+						break;
+					case CommunicationType::TWOCRC_FIELD_MSG :
+						i++;
+						break;
+					case CommunicationType::TWOCRC_GIMBAL_MSG :
+						printf("id : TWOCRC_GIMBAL_MSG \n");
+						transform.resize(sizeof(TwoCRC_GimbalMsg));
+						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
+						if(crc_ok){
+							twoCRC_GimbalMsg = fromTestVector<TwoCRC_GimbalMsg>(transform);
+							i+=sizeof(TwoCRC_GimbalMsg);
+						}else{
+							i+=sizeof(Header);
+							error_data_count ++;
+						}
+						break;
+					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+						printf("id : TWOCRC_SENTRY_GIMBAL_MSG \n");
+						memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+						if(crc_ok){
+							twoCRC_SentryGimbalMsg = fromTestVector<TwoCRC_SentryGimbalMsg>(transform);
+							i+=sizeof(TwoCRC_SentryGimbalMsg);
+						}else{
+							i+=sizeof(Header);
+							error_data_count ++;
+						}					
+						break;
+					default:
+						i++;
+						break;
+					}
+				}else{
+					error_header_count++;
+					i += sizeof(Header);
+				} // if(crc_ok_header)
+				
+			}else{
+				i++;
+				continue;
+			}
+		} //while
+		printf("run out\n");
+		return num_per_read;
+	}else{
 		return -1;
+	}
 }
+
+// int Port::receive()
+// {   
+// 	if(ROSCOMM_BUFFER_SIZE - putinIndex < DANGEROUS)
+// 	{
+// 		num_per_read = read(fd,RxBuff,sizeof(RxBuff));
+// 		putinIndex = 0;
+// 	}
+// 	else
+// 	{
+// 		num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
+// 	}	
+
+// 	if(num_per_read > 0)
+// 	{	
+// 		sum += num_per_read;	
+// 		putinIndex += num_per_read;
+// 		putinIndex = putinIndex > ROSCOMM_BUFFER_SIZE ? putinIndex%ROSCOMM_BUFFER_SIZE : putinIndex ;
+		
+// 		printf("haha receive[single:%d ,putinIndex:%d] \n",num_per_read,putinIndex);
+//     	return num_per_read;	
+// 	}
+// 	else
+// 	{
+// 		return -1;
+// 	}
+// }
+		
 
 /**
  *  Transmit the data
@@ -397,8 +516,6 @@ bool Port::setFlowControl(bool isFlowControl)
 		perror("tcsetattr");
 		return false;
 	}
-
-    handshake = true;
     return true;
 }
 

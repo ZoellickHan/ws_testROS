@@ -1,0 +1,46 @@
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:48:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   48 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:65:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+   65 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:179:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  179 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:196:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+  196 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+      |                       [01;35m[K^~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kvoid newSerialDriver::Port::registerType(int*, int)[m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:248:53:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knum[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  248 | void Port::registerType(int typeIDArray[ID_NUM],[01;35m[Kint num[m[K)
+      |                                                 [01;35m[K~~~~^~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::decode()[m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:266:63:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Klong unsigned int[m[K’ and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  266 |         for(int i = putoutIndex; [01;35m[KputoutIndex + sizeof(Header) <= putinIndex[m[K; i++ )
+      |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:272:53:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  272 |                 if([01;35m[K(putoutIndex + transform.size()) < putinIndex[m[K)
+      |                    [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp: In instantiation of ‘[01m[Kvoid newSerialDriver::Port::Classify(T&) [with T = rm_serial_driver::TwoCRC_GimbalMsg][m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:302:14:[m[K   required from here
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:336:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+  336 |         if([01;35m[K(putoutIndex + transform.size()) < putinIndex[m[K)
+      |            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp: In instantiation of ‘[01m[Kvoid newSerialDriver::Port::Classify(T&) [with T = rm_serial_driver::TwoCRC_SentryGimbalMsg][m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:308:14:[m[K   required from here
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:336:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:63:15:[m[K [01;35m[Kwarning: [m[K‘[01m[Kmemset[m[K’ used with length equal to number of elements without multiplication by element size [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmemset-elt-size-Wmemset-elt-size]8;;[m[K]
+   63 |         [01;35m[Kmemset(typing,0x00,ID_NUM)[m[K;
+      |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:53:42:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KtwoCRC_GimbalMsg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   53 |     rm_serial_driver::TwoCRC_GimbalMsg&  [01;35m[KtwoCRC_GimbalMsg[m[K = port->getTwoCRC_GimbalMsg();
+      |                                          [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:55:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcError_header[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   55 |     double& [01;35m[KcrcError_header[m[K  = port->geterrorHeaderRate();
+      |             [01;35m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:56:13:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KdataerrorRate[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+   56 |     double& [01;35m[KdataerrorRate[m[K    = port->geterrorDataRate();
+      |             [01;35m[K^~~~~~~~~~~~~[m[K

@@ -1,0 +1,59 @@
+[0.020s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.097s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.130s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[0.927s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[0.927s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:48:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.927s]    48 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.927s]       |                       [01;35m[K^~~~~~~[m[K
+[0.927s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:65:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.927s]    65 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.928s]       |                       [01;35m[K^~~~~~~[m[K
+[0.928s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[0.928s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:179:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.928s]   179 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.928s]       |                       [01;35m[K^~~~~~~[m[K
+[0.929s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:196:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.929s]   196 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.929s]       |                       [01;35m[K^~~~~~~[m[K
+[0.930s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kvoid newSerialDriver::Port::registerType(int*, int)[m[K’:
+[0.930s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:248:53:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knum[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.930s]   248 | void Port::registerType(int typeIDArray[ID_NUM],[01;35m[Kint num[m[K)
+[0.930s]       |                                                 [01;35m[K~~~~^~~[m[K
+[0.930s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::decode()[m[K’:
+[0.930s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:265:63:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Klong unsigned int[m[K’ and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.930s]   265 |         for(int i = putoutIndex; [01;35m[KputoutIndex + sizeof(Header) <= putinIndex[m[K; i++ )
+[0.930s]       |                                  [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[0.930s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:270:53:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.931s]   270 |                 if([01;35m[K(putoutIndex + transform.size()) < putinIndex[m[K)
+[0.931s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[0.987s] /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp: In instantiation of ‘[01m[Kvoid newSerialDriver::Port::Classify(T&) [with T = rm_serial_driver::TwoCRC_GimbalMsg][m[K’:
+[0.987s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:300:14:[m[K   required from here
+[0.988s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:331:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[0.988s]   331 |         if([01;35m[K(putoutIndex + transform.size()) < putinIndex[m[K)
+[0.988s]       |            [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[0.988s] /home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp: In instantiation of ‘[01m[Kvoid newSerialDriver::Port::Classify(T&) [with T = rm_serial_driver::TwoCRC_SentryGimbalMsg][m[K’:
+[0.988s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:306:14:[m[K   required from here
+[0.988s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:331:45:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kstd::vector<unsigned char>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} and ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-compare-Wsign-compare]8;;[m[K]
+[1.212s] [ 50%] [32m[1mLinking CXX executable test_ch343[0m
+[1.419s] [100%] Built target test_ch343
+[1.438s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[1.493s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343
+[1.505s] -- Install configuration: ""
+[1.505s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+[1.505s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+[1.505s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+[1.505s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.sh
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.dsv
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.bash
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.sh
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.zsh
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.dsv
+[1.506s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.dsv
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+[1.506s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.xml
+[1.507s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343
+[1.507s] -- Set runtime path of "/home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343" to ""
+[1.509s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343

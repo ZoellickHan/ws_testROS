@@ -1,0 +1,64 @@
+[0.008s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.048s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.075s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[0.076s] [ 50%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/newDriver.cpp.o[0m
+[0.450s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::setBaudRate()[m[K’:
+[0.450s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:48:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.450s]    48 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.450s]       |                       [01;35m[K^~~~~~~[m[K
+[0.450s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:65:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.450s]    65 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.451s]       |                       [01;35m[K^~~~~~~[m[K
+[0.451s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kbool newSerialDriver::Port::init()[m[K’:
+[0.451s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:179:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.451s]   179 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.451s]       |                       [01;35m[K^~~~~~~[m[K
+[0.451s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:196:23:[m[K [01;35m[Kwarning: [m[Koverflow in conversion from ‘[01m[Klong unsigned int[m[K’ to ‘[01m[Kint[m[K’ changes value from ‘[01m[K2150388778[m[K’ to ‘[01m[K-2144578518[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Woverflow-Woverflow]8;;[m[K]
+[0.451s]   196 |         if (ioctl(fd, [01;35m[KTCGETS2[m[K, &tio))
+[0.451s]       |                       [01;35m[K^~~~~~~[m[K
+[0.451s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kvoid newSerialDriver::Port::registerType(int*, int)[m[K’:
+[0.451s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:248:53:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knum[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[0.451s]   248 | void Port::registerType(int typeIDArray[ID_NUM],[01;35m[Kint num[m[K)
+[0.451s]       |                                                 [01;35m[K~~~~^~~[m[K
+[0.454s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::decode()[m[K’:
+[0.454s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:266:21:[m[K [01;31m[Kerror: [m[K‘[01m[KputoutIndex[m[K’ was not declared in this scope
+[0.454s]   266 |         for(int i = [01;31m[KputoutIndex[m[K; putoutIndex + sizeof(Header) <= putinIndex; i++ )
+[0.454s]       |                     [01;31m[K^~~~~~~~~~~[m[K
+[0.457s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:266:66:[m[K [01;31m[Kerror: [m[K‘[01m[KputinIndex[m[K’ was not declared in this scope
+[0.457s]   266 |         for(int i = putoutIndex; putoutIndex + sizeof(Header) <= [01;31m[KputinIndex[m[K; i++ )
+[0.457s]       |                                                                  [01;31m[K^~~~~~~~~~[m[K
+[0.459s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kvoid newSerialDriver::Port::Classify(T&)[m[K’:
+[0.460s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:339:13:[m[K [01;31m[Kerror: [m[K‘[01m[KputoutIndex[m[K’ was not declared in this scope
+[0.460s]   339 |         if(([01;31m[KputoutIndex[m[K + transform.size()) < putinIndex)
+[0.460s]       |             [01;31m[K^~~~~~~~~~~[m[K
+[0.462s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:339:47:[m[K [01;31m[Kerror: [m[K‘[01m[KputinIndex[m[K’ was not declared in this scope
+[0.462s]   339 |         if((putoutIndex + transform.size()) < [01;31m[KputinIndex[m[K)
+[0.462s]       |                                               [01;31m[K^~~~~~~~~~[m[K
+[0.464s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:[m[K In member function ‘[01m[Kint newSerialDriver::Port::firstversion_receive()[m[K’:
+[0.464s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:414:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_count[m[K’ was not declared in this scope; did you mean ‘[01m[Kerror_t[m[K’?
+[0.464s]   414 |                                                         [01;31m[Kerror_count[m[K ++;
+[0.464s]       |                                                         [01;31m[K^~~~~~~~~~~[m[K
+[0.465s]       |                                                         [32m[Kerror_t[m[K
+[0.467s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:425:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_count[m[K’ was not declared in this scope; did you mean ‘[01m[Kerror_t[m[K’?
+[0.467s]   425 |                                                         [01;31m[Kerror_count[m[K ++;
+[0.467s]       |                                                         [01;31m[K^~~~~~~~~~~[m[K
+[0.467s]       |                                                         [32m[Kerror_t[m[K
+[0.469s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/newDriver.cpp:433:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_count[m[K’ was not declared in this scope; did you mean ‘[01m[Kerror_t[m[K’?
+[0.469s]   433 |                                         [01;31m[Kerror_count[m[K++;
+[0.469s]       |                                         [01;31m[K^~~~~~~~~~~[m[K
+[0.469s]       |                                         [32m[Kerror_t[m[K
+[0.530s] gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:90: CMakeFiles/test_ch343.dir/src/newDriver.cpp.o] Error 1
+[0.530s] gmake[2]: *** Waiting for unfinished jobs....
+[2.150s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[2.150s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:60:15:[m[K [01;35m[Kwarning: [m[K‘[01m[Kmemset[m[K’ used with length equal to number of elements without multiplication by element size [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmemset-elt-size-Wmemset-elt-size]8;;[m[K]
+[2.150s]    60 |         [01;35m[Kmemset(typing,0x00,ID_NUM)[m[K;
+[2.151s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[2.152s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:52:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcError_header[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.152s]    52 |     int& [01;35m[KcrcError_header[m[K  = port->geterrorHeader();
+[2.152s]       |          [01;35m[K^~~~~~~~~~~~~~~[m[K
+[2.152s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:53:10:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KcrcError_data[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.152s]    53 |     int& [01;35m[KcrcError_data[m[K    = port->geterrorData();
+[2.152s]       |          [01;35m[K^~~~~~~~~~~~~[m[K
+[2.716s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
+[2.716s] gmake: *** [Makefile:146: all] Error 2
+[2.718s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20

@@ -1,0 +1,33 @@
+[0.024s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[0.105s] [35m[1mConsolidate compiler generated dependencies of target test_ch343[0m
+[0.142s] [ 25%] [32mBuilding CXX object CMakeFiles/test_ch343.dir/src/test_read.cpp.o[0m
+[3.779s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[3.779s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:63:15:[m[K [01;35m[Kwarning: [m[K‘[01m[Kmemset[m[K’ used with length equal to number of elements without multiplication by element size [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmemset-elt-size-Wmemset-elt-size]8;;[m[K]
+[3.779s]    63 |         [01;35m[Kmemset(typing,0x00,ID_NUM)[m[K;
+[3.779s]       |         [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[3.781s] [01m[K/home/zoellickhan/Code/ws_testROS/src/test_ch343/src/test_read.cpp:53:42:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KtwoCRC_GimbalMsg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[3.781s]    53 |     rm_serial_driver::TwoCRC_GimbalMsg&  [01;35m[KtwoCRC_GimbalMsg[m[K = port->getTwoCRC_GimbalMsg();
+[3.781s]       |                                          [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[4.707s] [ 50%] [32m[1mLinking CXX executable test_ch343[0m
+[4.910s] [100%] Built target test_ch343
+[4.933s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/zoellickhan/Code/ws_testROS/build/test_ch343 -- -j20 -l20
+[4.994s] Invoking command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343
+[5.008s] -- Install configuration: ""
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/package_run_dependencies/test_ch343
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/parent_prefix_path/test_ch343
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.sh
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/ament_prefix_path.dsv
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.sh
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/environment/path.dsv
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.bash
+[5.008s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.sh
+[5.009s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.zsh
+[5.009s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/local_setup.dsv
+[5.009s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.dsv
+[5.009s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/ament_index/resource_index/packages/test_ch343
+[5.009s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config.cmake
+[5.009s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/cmake/test_ch343Config-version.cmake
+[5.010s] -- Up-to-date: /home/zoellickhan/Code/ws_testROS/install/test_ch343/share/test_ch343/package.xml
+[5.010s] -- Installing: /home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343
+[5.010s] -- Set runtime path of "/home/zoellickhan/Code/ws_testROS/install/test_ch343/lib/test_ch343/test_ch343" to ""
+[5.014s] Invoked command in '/home/zoellickhan/Code/ws_testROS/build/test_ch343' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/zoellickhan/Code/ws_testROS/build/test_ch343
