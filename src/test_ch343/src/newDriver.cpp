@@ -207,12 +207,13 @@ int Port::firstversion_receive()
 	memcpy(RxBuff,RxBuff+putoutIndex,putinIndex-putoutIndex);
 	putinIndex = putinIndex - putoutIndex;
 	putoutIndex = 0;
-	memset(RxBuff+putinIndex,0x00,2048-putinIndex);
+	memset(RxBuff+putinIndex,0x00,DANGEROUS);
 
 	printf("putin index1: %d \n",putinIndex);
 	printf("putout index1: %d \n",putoutIndex);
 
-	num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
+	num_per_read = read(fd,RxBuff+putinIndex,1024);
+	if(num_per_read != 64) printf("!!!!!!!!!!! num_per_read :%d \n",num_per_read);
 	if(num_per_read >= 0)
 	{	
 		putinIndex += num_per_read;

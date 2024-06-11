@@ -13,7 +13,7 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
-#define DANGEROUS 2048
+#define DANGEROUS 512
 namespace newSerialDriver
 {
 

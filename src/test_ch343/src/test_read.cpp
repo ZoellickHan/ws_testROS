@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         // printf("two_sentry_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_z);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.crc_3);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.crc_4);
-        printf("crc1:%d ,crc2:%d ,single: %d sum: %d,decode_rate :%f ,rate : %f \n",crcError_header,crcError_data,single,sum,float(decodeCount)/double(duration.count())*1000000,float(crcError_data+crcError_header)/float(decodeCount));
+        printf("crc1:%d ,crc2:%d ,single: %d sum: %d,decode_rate :%f ,rate : %f, time: %f \n",crcError_header,crcError_data,single,sum,float(decodeCount)/double(duration.count())*1000000,float(crcError_data+crcError_header)/float(decodeCount),double(duration.count())/1000000);
         // printf("normal gimbal:%f \n",twoCRC_GimbalMsg.bullet_speed);
 
 
