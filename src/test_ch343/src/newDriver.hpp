@@ -5,7 +5,6 @@
 #include <map>
 #include <memory>
 #include <string>
-#include <thread>
 #include <vector>
 #include <atomic>
 
@@ -14,6 +13,7 @@
 
 #define ROSCOMM_BUFFER_SIZE 2048
 #define DANGEROUS 512
+#define BUFFER_SIZE 1024
 namespace newSerialDriver
 {
 
@@ -66,21 +66,30 @@ public:
     bool reopen();
 
     int  transmit(std::vector<uint8_t> & buff);   
-    int firstversion_receive();
+
+    //VERSIOM THREE
+    void  receive();
+    void  putinIndexHandle(int size);
+    void  putoutIndexHandle();
 
     bool isPortInit();
     bool isPortOpen();
+    long& getsum(){return sum;}
     int& geterrorHeader(){return error_header_count ;}
     int& geterrorData(){return error_data_count;}
     int& getdecodeCount(){return decodeCount;}
+    int& getputinIndex(){return putinIndex;}
+    int& getputoutIndex(){return putoutIndex;}
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
     rm_serial_driver::GimbalMsg& getGimbalMsg(){return gimbalMsg;}
     rm_serial_driver::SentryGimbalMsg& getSentryGimbalMsg(){return sentryGimbalMsg;}
 
 private:
+
     std::shared_ptr<SerialConfig> config;
     int fd;
+    long sum                = 0;
     int num_per_read        = 0;
     int num_per_write       = 0;
     int error_header_count  = 0;
@@ -88,16 +97,14 @@ private:
     int decodeCount         = 0;
     int putinIndex          = 0;
     int putoutIndex         = 0;
-    int decodeByte          = 0;
     bool crc_ok_header   = false;
     bool crc_ok          = false;
     bool isinit          = false;
-    bool isopen          = false;
-
+    bool isopen          = false;   
 
     uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
-    
+    uint8_t Buffer[BUFFER_SIZE];
     std::vector<uint8_t> transform;
     rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;

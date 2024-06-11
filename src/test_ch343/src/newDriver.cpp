@@ -201,72 +201,52 @@ int Port::openPort()
 	return fd;
 }
 
-int Port::firstversion_receive()
+//VERSION THREE
+void Port::receive()
 {
-	//reset the buffer
-	memcpy(RxBuff,RxBuff+putoutIndex,putinIndex-putoutIndex);
-	putinIndex = putinIndex - putoutIndex;
-	putoutIndex = 0;
-	memset(RxBuff+putinIndex,0x00,DANGEROUS);
+	while(true)
+	{
+		num_per_read = read(fd,Buffer,BUFFER_SIZE);
+		if(num_per_read>=0)	this->putinIndexHandle(num_per_read);
+	}
+}
 
-	printf("putin index1: %d \n",putinIndex);
-	printf("putout index1: %d \n",putoutIndex);
+void Port::putinIndexHandle(int size)
+{	
+	while(true)
+	{
+		memcpy(RxBuff+putinIndex,Buffer,size);
+		putinIndex += size; 
+		putinIndex = putinIndex%ROSCOMM_BUFFER_SIZE;
+	}
+}
 
-	num_per_read = read(fd,RxBuff+putinIndex,1024);
-	if(num_per_read != 64) printf("!!!!!!!!!!! num_per_read :%d \n",num_per_read);
-	if(num_per_read >= 0)
-	{	
-		putinIndex += num_per_read;
-		// if receiver lass than a header. then decode next time.
-		if(putinIndex - putoutIndex < sizeof(Header)){return num_per_read;}
-
-		int i=0;
-		while (i < num_per_read )
+void Port::putoutIndexHandle()
+{
+	while(true){
+	while(putoutIndex < putinIndex)
+	{
+		printf("boji unhappy \n");
+		if(putinIndex - putinIndex < sizeof(Header)) continue;
+		
+		if(RxBuff[putoutIndex] == 0xAA)
 		{
-			if(RxBuff[i+putoutIndex] == 0xAA)
-			{	
-				putoutIndex += i; // update the putout when searching.
+			crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(Header));
+			if(crc_ok_header)
+			{
 				transform.resize(sizeof(Header));
-				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
-				if(crc_ok_header)
-				{
-					memcpy(transform.data(),RxBuff+i,sizeof(header));
-					header = fromVector<Header>(transform);
-					switch (header.protocolID)
-					{
-					case CommunicationType::TWOCRC_CHASSIS_MSG :
-						/*not define*/
-						i++;
-						break;
-					case CommunicationType::TWOCRC_FIELD_MSG :
-						/*not define*/
-						i++;
-						break;
-					case CommunicationType::TWOCRC_GIMBAL_MSG :
-						if(putinIndex - putoutIndex < sizeof(TwoCRC_GimbalMsg)){break;}
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_GimbalMsg));
-						if(crc_ok)
-						{
-							transform.resize(sizeof(TwoCRC_GimbalMsg));
-							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
-							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
-							decodeCount++;
-						}
-						else
-						{
-							error_data_count ++;
-						}
-						i+=sizeof(TwoCRC_GimbalMsg);
-						putoutIndex += sizeof(TwoCRC_GimbalMsg);
-						break;
+				memcpy(transform.data(),RxBuff+putoutIndex,sizeof(Header));
+				header = fromVector<Header>(transform);
 
+				switch (header.protocolID)
+				{
 					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-						if(putinIndex - putoutIndex < sizeof(TwoCRC_SentryGimbalMsg)){break;}
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+						if(putoutIndex - putinIndex < sizeof(TwoCRC_SentryGimbalMsg)) continue;
+						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
 						if(crc_ok)
 						{
 							transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
-							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
 							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
 							decodeCount++;
 						}
@@ -274,35 +254,48 @@ int Port::firstversion_receive()
 						{
 							error_data_count ++;
 						}
-						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);	
-						i+=sizeof(TwoCRC_SentryGimbalMsg);				
+						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);
+						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
 						break;
+					case CommunicationType::TWOCRC_GIMBAL_MSG :
+						if(putoutIndex - putinIndex < sizeof(TwoCRC_GimbalMsg)) continue;
+						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
+						if(crc_ok)
+						{
+							transform.resize(sizeof(TwoCRC_GimbalMsg));
+							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
+							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
+							decodeCount++;
+						}
+						else
+						{
+							error_data_count ++;
+						}
+						putoutIndex += sizeof(TwoCRC_GimbalMsg);
+						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+						break;
+
 					default:
-						i++;
+						putoutIndex += sizeof(Header);
+						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
 						break;
-					}
 				}
-				else
-				{
-					error_header_count++;
-					i += sizeof(Header);
-				} // if(crc_ok_header)
 			}
 			else
 			{
-				i++;
-				continue;
-			}
-		} //while
-		printf("putin index2: %d \n",putinIndex);
-		printf("putout index2: %d \n",putoutIndex);
- 		printf("run out\n");
-		return num_per_read;
-	}else{
-		return -1;
-	}
+				error_header_count ++;
+				putoutIndex += sizeof(Header);
+				putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+			}// if crc_ok_header 
+		}
+		else
+		{
+			putoutIndex ++;
+			putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+		}// if RxBuffer[i] == 0xAA
+	}// while(putoutIndex < putinIndex)
+	}//while true
 }
-
 /**
  *  Transmit the data
 */
