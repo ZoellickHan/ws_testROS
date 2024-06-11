@@ -13,6 +13,7 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
+#define DANGEROUS 2048
 namespace newSerialDriver
 {
 
@@ -85,10 +86,14 @@ private:
     int error_header_count  = 0;
     int error_data_count    = 0;
     int decodeCount         = 0;
+    int putinIndex          = 0;
+    int putoutIndex         = 0;
+    int decodeByte          = 0;
     bool crc_ok_header   = false;
     bool crc_ok          = false;
     bool isinit          = false;
     bool isopen          = false;
+
 
     uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];

@@ -40,6 +40,7 @@ bool Port::init()
 {
     memset(RxBuff,0x00,sizeof(RxBuff));
     memset(TxBuff,0x00,sizeof(TxBuff));
+	transform.reserve(DANGEROUS);
 
     // init port 
     struct termios newtio;
@@ -202,58 +203,34 @@ int Port::openPort()
 
 int Port::firstversion_receive()
 {
-	num_per_read = read(fd,RxBuff,sizeof(RxBuff));
+	//reset the buffer
+	memcpy(RxBuff,RxBuff+putoutIndex,putinIndex-putoutIndex);
+	putinIndex = putinIndex - putoutIndex;
+	putoutIndex = 0;
+	memset(RxBuff+putinIndex,0x00,2048-putinIndex);
 
-	if(num_per_read > 0)
+	printf("putin index1: %d \n",putinIndex);
+	printf("putout index1: %d \n",putoutIndex);
+
+	num_per_read = read(fd,RxBuff+putinIndex,sizeof(RxBuff));
+	if(num_per_read >= 0)
 	{	
-		printf("run this\n");
-		transform.reserve(150);
+		putinIndex += num_per_read;
+		// if receiver lass than a header. then decode next time.
+		if(putinIndex - putoutIndex < sizeof(Header)){return num_per_read;}
+
 		int i=0;
-		while (i < num_per_read)
+		while (i < num_per_read )
 		{
-			// printf("run this\n");
-			if(RxBuff[i] == 0xAA)
+			if(RxBuff[i+putoutIndex] == 0xAA)
 			{	
-				// switch (RxBuff[i+2])
-				// {
-				// case CommunicationType::FIELD_MSG :
-				// 	i++;
-				// 	break;
-				// case CommunicationType::GIMBAL_MSG :
-				// 	transform.resize(sizeof(GimbalMsg));
-				// 	crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(GimbalMsg));
-				// 	if(crc_ok)
-				// 	{
-				// 		gimbalMsg = fromVector<GimbalMsg>(transform);
-				// 	}else{
-				// 		error_data_count++;
-				// 	}
-				// 	i+=sizeof(GimbalMsg);				
-				// 	i++;
-				// 	break;
-				// case CommunicationType::SENTRY_GIMBAL_MSG :
-				// 	transform.resize(sizeof(SentryGimbalMsg));
-				// 	crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(SentryGimbalMsg));
-				// 	if(crc_ok)
-				// 	{
-				// 		sentryGimbalMsg = fromVector<SentryGimbalMsg>(transform);
-				// 	}else{
-				// 		error_data_count++;
-				// 	}
-				// 	i+=sizeof(SentryGimbalMsg);
-				// 	break;
-				// default:
-				// 	i++;
-				// 	break;
-				// }
+				putoutIndex += i; // update the putout when searching.
 				transform.resize(sizeof(Header));
 				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
 				if(crc_ok_header)
 				{
-					printf("run that\n");
 					memcpy(transform.data(),RxBuff+i,sizeof(header));
 					header = fromVector<Header>(transform);
-					
 					switch (header.protocolID)
 					{
 					case CommunicationType::TWOCRC_CHASSIS_MSG :
@@ -265,49 +242,60 @@ int Port::firstversion_receive()
 						i++;
 						break;
 					case CommunicationType::TWOCRC_GIMBAL_MSG :
-						printf("id : TWOCRC_GIMBAL_MSG \n");
-						transform.resize(sizeof(TwoCRC_GimbalMsg));
+						if(putinIndex - putoutIndex < sizeof(TwoCRC_GimbalMsg)){break;}
 						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_GimbalMsg));
-						if(crc_ok){
+						if(crc_ok)
+						{
 							transform.resize(sizeof(TwoCRC_GimbalMsg));
 							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
 							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
-							i+=sizeof(TwoCRC_GimbalMsg);
 							decodeCount++;
-						}else{
-							i+=sizeof(TwoCRC_GimbalMsg);
+						}
+						else
+						{
 							error_data_count ++;
 						}
+						i+=sizeof(TwoCRC_GimbalMsg);
+						putoutIndex += sizeof(TwoCRC_GimbalMsg);
 						break;
+
 					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-						printf("id : TWOCRC_SENTRY_GIMBAL_MSG \n");
+						if(putinIndex - putoutIndex < sizeof(TwoCRC_SentryGimbalMsg)){break;}
 						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
-						if(crc_ok){
+						if(crc_ok)
+						{
 							transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
 							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
 							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
-							i+=sizeof(TwoCRC_SentryGimbalMsg);
 							decodeCount++;
-						}else{
-							i+=sizeof(TwoCRC_SentryGimbalMsg);
+						}
+						else
+						{
 							error_data_count ++;
-						}					
+						}
+						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);	
+						i+=sizeof(TwoCRC_SentryGimbalMsg);				
 						break;
 					default:
 						i++;
 						break;
 					}
-				}else{
+				}
+				else
+				{
 					error_header_count++;
 					i += sizeof(Header);
 				} // if(crc_ok_header)
-				
-			}else{
+			}
+			else
+			{
 				i++;
 				continue;
 			}
 		} //while
-		printf("run out\n");
+		printf("putin index2: %d \n",putinIndex);
+		printf("putout index2: %d \n",putoutIndex);
+ 		printf("run out\n");
 		return num_per_read;
 	}else{
 		return -1;

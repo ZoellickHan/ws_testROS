@@ -11,7 +11,7 @@ using namespace newSerialDriver;
 using namespace rm_serial_driver;
 using namespace crc16;
 
-shared_ptr<SerialConfig> config = make_shared<SerialConfig>(2000000,8,0,StopBit::ONE,Parity::NONE);
+shared_ptr<SerialConfig> config = make_shared<SerialConfig>(2000000,8,0,StopBit::TWO,Parity::NONE);
 shared_ptr<Port>         port   = make_shared<Port>(config);
 struct timespec ts2;
 
