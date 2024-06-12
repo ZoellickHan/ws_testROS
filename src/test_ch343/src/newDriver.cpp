@@ -1,5 +1,4 @@
 #include "newDriver.hpp"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -17,13 +16,14 @@
 #include <asm/termios.h>
 #undef termios
 #include <termios.h>
-
+namespace rm_serial_driver
+{
 namespace newSerialDriver
 {
-using namespace crc16;
+
 using namespace std;
-using namespace newSerialDriver;
-using namespace rm_serial_driver;
+using Parity = SerialConfig::Parity;
+using StopBit = SerialConfig::StopBit;
 extern "C" int ioctl(int d, int request, ...);
 
 Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
@@ -34,7 +34,7 @@ Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 }
 
 /**
- * use this to init the port at first, then open
+ * use this to init the port first, then open
 */
 bool Port::init()
 {
@@ -201,7 +201,10 @@ int Port::openPort()
 	return fd;
 }
 
-//VERSION THREE
+/**
+ * use a thread to start receive funcation
+ * e.g. std::thread receiverThread(&newSerialDriver::Port::receive(),port)
+ */
 void Port::receive()
 {
 	while(true)
@@ -221,7 +224,11 @@ void Port::putinIndexHandle(int size)
 	}
 }
 
-void Port::putoutIndexHandle()
+/**
+ * use a thread to start receive funcation
+ * e.g. std::thread receiverThread(&newSerialDriver::Port::decodeHandle(),port)
+ */
+void Port::decodeHandle()
 {
 	while(true){
 	while(putoutIndex < putinIndex)
@@ -237,11 +244,11 @@ void Port::putoutIndexHandle()
 				transform.resize(sizeof(Header));
 				memcpy(transform.data(),RxBuff+putoutIndex,sizeof(Header));
 				header = fromVector<Header>(transform);
-
+				currentCRC = CRCstate::CRC_OK;
 				switch (header.protocolID)
 				{
 					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-						if(putoutIndex - putinIndex < sizeof(TwoCRC_SentryGimbalMsg)) continue;
+						if(putoutIndex - putinIndex <int(sizeof(TwoCRC_SentryGimbalMsg))) continue;
 						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
 						if(crc_ok)
 						{
@@ -249,16 +256,18 @@ void Port::putoutIndexHandle()
 							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
 							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
 							decodeCount++;
+							currentCRC = CRCstate::CRC_OK;
 						}
 						else
 						{
+							currentCRC = CRCstate::CRC_ERROR_DATA;
 							error_data_count ++;
 						}
 						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);
 						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
 						break;
 					case CommunicationType::TWOCRC_GIMBAL_MSG :
-						if(putoutIndex - putinIndex < sizeof(TwoCRC_GimbalMsg)) continue;
+						if(putoutIndex - putinIndex < int(sizeof(TwoCRC_GimbalMsg))) continue;
 						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
 						if(crc_ok)
 						{
@@ -266,9 +275,11 @@ void Port::putoutIndexHandle()
 							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
 							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
 							decodeCount++;
+							currentCRC = CRCstate::CRC_OK;
 						}
 						else
 						{
+							currentCRC = CRCstate::CRC_ERROR_DATA;
 							error_data_count ++;
 						}
 						putoutIndex += sizeof(TwoCRC_GimbalMsg);
@@ -283,6 +294,7 @@ void Port::putoutIndexHandle()
 			}
 			else
 			{
+				currentCRC = CRCstate::CRC_ERROR_HEADER;
 				error_header_count ++;
 				putoutIndex += sizeof(Header);
 				putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
@@ -336,7 +348,6 @@ bool Port::reopen()
 				else return false;
 			}
 		}
-
 	}
 }
 
@@ -356,7 +367,16 @@ bool Port::isPortOpen()
 		return false;
 }
 
-Port::~Port(){}
+Port::~Port()
+{
+	if(receiveThread.joinable())
+		receiveThread.join();
+	if(decodeThread.joinable())
+		decodeThread.join();
+	if(isopen)
+		closePort();
+}
 SerialConfig::~SerialConfig(){}
 
 }//newSerialDriver
+}//rm_serial_driver

@@ -14,28 +14,31 @@
 #define ROSCOMM_BUFFER_SIZE 2048
 #define DANGEROUS 512
 #define BUFFER_SIZE 1024
+
+namespace rm_serial_driver
+{
 namespace newSerialDriver
 {
-
-enum class StopBit
-{
-    ONE,
-    ONE_POINT_FIVE,
-    TWO
-};
-
-enum class Parity
-{
-    NONE,
-    ODD,
-    EVEN,
-    MARK,
-    SPACE
-};
 
 class  SerialConfig
 {  
 public: 
+    enum class StopBit
+    {
+        ONE,
+        ONE_POINT_FIVE,
+        TWO
+    };
+
+    enum class Parity
+    {
+        NONE,
+        ODD,
+        EVEN,
+        MARK,
+        SPACE
+    };
+
     SerialConfig() = delete;
     SerialConfig(int bps, int databit, bool flow, StopBit stopbits, Parity paritys)
     {
@@ -57,6 +60,13 @@ public:
 class Port
 {
 public:
+    enum class CRCstate : uint8_t
+    {
+        CRC_OK = 0,
+        CRC_ERROR_HEADER = 1,
+        CRC_ERROR_DATA = 2,
+    };
+
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
 
@@ -70,8 +80,9 @@ public:
     //VERSIOM THREE
     void  receive();
     void  putinIndexHandle(int size);
-    void  putoutIndexHandle();
-
+    void  decodeHandle();
+    void  testingMCU();
+    
     bool isPortInit();
     bool isPortOpen();
     long& getsum(){return sum;}
@@ -80,6 +91,13 @@ public:
     int& getdecodeCount(){return decodeCount;}
     int& getputinIndex(){return putinIndex;}
     int& getputoutIndex(){return putoutIndex;}
+
+    CRCstate& CRCnotice(){return currentCRC;}
+
+    std::thread receiveThread;
+    std::thread decodeThread;
+    std::thread testingThread;
+
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
     rm_serial_driver::GimbalMsg& getGimbalMsg(){return gimbalMsg;}
@@ -105,6 +123,7 @@ private:
     uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
     uint8_t Buffer[BUFFER_SIZE];
+    CRCstate currentCRC = CRCstate::CRC_OK;
     std::vector<uint8_t> transform;
     rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
@@ -114,3 +133,4 @@ private:
 };
 
 }//newSerialDriver
+}//rm_serial_driver

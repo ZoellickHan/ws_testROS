@@ -5,13 +5,14 @@
 #include <bitset>
 #include <chrono>
 #include <thread>
+
 using namespace std;
-using namespace newSerialDriver;
+using namespace rm_serial_driver::newSerialDriver;
 using namespace rm_serial_driver;
 using namespace crc16;
 using namespace chrono;
 
-shared_ptr<SerialConfig> config = make_shared<SerialConfig>(2000000,8,0,StopBit::TWO,Parity::NONE);
+shared_ptr<SerialConfig> config = make_shared<SerialConfig>(2000000,8,0,SerialConfig::StopBit::TWO,SerialConfig::Parity::NONE);
 shared_ptr<Port>         port   = make_shared<Port>(config);
 
 
@@ -34,9 +35,9 @@ int main(int argc, char **argv)
     int&    putoutIndex   = port->getputoutIndex();
     auto    start            = high_resolution_clock::now();
 
-    std::thread receiveThread(&newSerialDriver::Port::receive,port);
-    std::thread putoutHandle(&newSerialDriver::Port::putoutIndexHandle,port);
-
+    port->receiveThread = std::thread(&Port::receive,port);
+    port->decodeThread  = std::thread(&Port::decodeHandle,port);
+    
     while(true)
     {
         auto stop =  high_resolution_clock::now();
