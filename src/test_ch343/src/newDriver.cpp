@@ -359,6 +359,11 @@ Port::PkgState Port::putoutIndexFun()
 		{
 			printf("header error: [ %d , %d ] \n",j,frameBuffer[j]);
 		}
+		printf("################################ putout: %d\n",putout);
+		for(int j=putout-sizeof(Header);j<sizeof(RxBuff)-putout;j++)
+		{
+			printf("RXBUFFER error: [ %d , %d ] \n",j,RxBuff[j]);
+		}
 		return PkgState::CRC_HEADER_ERRROR;
 	}
 
@@ -373,7 +378,6 @@ Port::PkgState Port::putoutIndexFun()
 		{ 
 			if(size < sizeof(TwoCRC_SentryGimbalMsg))
 			{
-				// printf("PkgState::PAYLOAD_INCOMPLETE");
 				frameState = PkgState::PAYLOAD_INCOMPLETE;
 				return PkgState::PAYLOAD_INCOMPLETE;
 			}
