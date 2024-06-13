@@ -12,7 +12,7 @@
 #include "protocol.hpp"
 #include "crc.hpp" 
 
-#define ROSCOMM_BUFFER_SIZE 1024
+#define ROSCOMM_BUFFER_SIZE 2048
 #define BUFFER_SIZE 512
 namespace newSerialDriver
 {
@@ -79,19 +79,25 @@ public:
     bool isPortOpen();
 
     // rx tx function
-    int  transmit(std::vector<uint8_t> & buff); 
-    void decodeFun();  
+    int  transmit(std::vector<uint8_t> & buff);  
     void readFun();
+    void decodeFun(int ID);
+    void decodeThreadFun();
     void putinIndexFun(int size);
     PkgState putoutIndexFun();
-    void decodeFun();
+
     
     // data and debug function
     int& geterrorHeader(){return error_header_count;}
     int& geterrorData(){return error_data_count;}
     int& getdecodeCount(){return decodeCount;}
+    int& getputinIndex(){return putinIndex;}
+    int& getputoutIndex(){return putoutIndex;}
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
+
+    std::thread  readThread; 
+    std::thread  decodeThread;
 
 private:
 
@@ -105,8 +111,6 @@ private:
     bool isopen          = false;
 
     //rx thread
-    std::thread         readThread; 
-    std::thread         decodeThread;
     PkgState            frameState;
     // state data
     int rxsize              = 0;
@@ -127,7 +131,7 @@ private:
     uint8_t RxBuff[ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[ROSCOMM_BUFFER_SIZE];
     uint8_t frameBuffer[BUFFER_SIZE];
-    
+
     rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;

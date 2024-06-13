@@ -282,7 +282,7 @@ void Port::putinIndexFun(int size)
 	if( putinIndex + size > ROSCOMM_BUFFER_SIZE)
 	{
 		memcpy(RxBuff+putinIndex, readBuffer, ROSCOMM_BUFFER_SIZE-putinIndex);
-		memcpy(RxBuff, readBuffer+(ROSCOMM_BUFFER_SIZE-putinIndex), size - (ROSCOMM_BUFFER_SIZE-putinIndex));
+		memcpy(RxBuff, readBuffer+(ROSCOMM_BUFFER_SIZE-putinIndex), size-(ROSCOMM_BUFFER_SIZE-putinIndex));
 		putinIndex = (putinIndex + size) % ROSCOMM_BUFFER_SIZE;
 	}
 	else
@@ -293,15 +293,24 @@ void Port::putinIndexFun(int size)
 	rxsize = (putinIndex - putoutIndex + ROSCOMM_BUFFER_SIZE) % ROSCOMM_BUFFER_SIZE;
 }
 
+void Port::decodeThreadFun()
+{
+	while (true)
+	{
+		if(rxsize>2)
+			putoutIndexFun();
+	}
+}
+
 Port::PkgState Port::putoutIndexFun()
 {
 	int size = rxsize;
 	int putout = putoutIndex;
-
 	while(size > 2)
 	{		
 		if(RxBuff[putout] == 0xAA)
 		{
+			putoutIndex = (putout - 1)%ROSCOMM_BUFFER_SIZE;
 			break;
 		}
 		putout = (putout + 1)%ROSCOMM_BUFFER_SIZE;
@@ -311,6 +320,7 @@ Port::PkgState Port::putoutIndexFun()
 	// check the header size
 	if( size < sizeof(Header))
 	{
+		printf("PkgState::HEADER_INCOMPLETE\n");
 		frameState = PkgState::HEADER_INCOMPLETE;
 		return PkgState::HEADER_INCOMPLETE;
 	}
@@ -326,15 +336,16 @@ Port::PkgState Port::putoutIndexFun()
 		memcpy(frameBuffer + (ROSCOMM_BUFFER_SIZE - putout),RxBuff,sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
 	}
 
-	putout += sizeof(Header); //update
+	putout = (putout+sizeof(Header))%ROSCOMM_BUFFER_SIZE ; //update
 	crc_ok_header = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(Header));
 
 	if(!crc_ok_header)
 	{
+		printf("PkgState::CRC_HEADER_ERRROR\n");
 		frameState = PkgState::CRC_HEADER_ERRROR;
-		putout = (putout + sizeof(Header) -1 ) % ROSCOMM_BUFFER_SIZE;
 		size -= sizeof(Header);
-		putoutIndex = putout;
+		putoutIndex = (putout - 1)%ROSCOMM_BUFFER_SIZE;
+		error_header_count ++;
 	}
 
 	transformVector.resize(sizeof(Header));
@@ -348,34 +359,39 @@ Port::PkgState Port::putoutIndexFun()
 
 			if(size < sizeof(TwoCRC_SentryGimbalMsg))
 			{
+				printf("PkgState::PAYLOAD_INCOMPLETE");
 				frameState = PkgState::PAYLOAD_INCOMPLETE;
 				return PkgState::PAYLOAD_INCOMPLETE;
 			}
 
 			//copy the payload
-			if( putout + sizeof(TwoCRC_SentryGimbalMsg) - sizeof(Header) < ROSCOMM_BUFFER_SIZE )
+			if( putout + sizeof(TwoCRC_SentryGimbalMsg) < ROSCOMM_BUFFER_SIZE )
 			{
-				memcpy(frameBuffer+sizeof(Header),RxBuff + putout, sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header));
+				memcpy(frameBuffer,RxBuff + putout, sizeof(TwoCRC_SentryGimbalMsg));
 			} 
 			else
 			{
-				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, ROSCOMM_BUFFER_SIZE - putout);
-				memcpy(frameBuffer+(sizeof(Header)+ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
+				memcpy(frameBuffer,RxBuff+putout, ROSCOMM_BUFFER_SIZE - putout);
+				memcpy(frameBuffer+(ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_SentryGimbalMsg)-(ROSCOMM_BUFFER_SIZE - putout));
 			}
 
 			crc_ok = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(TwoCRC_SentryGimbalMsg));
 
 			if(!crc_ok)
 			{
+				printf("PkgState::CRC_PKG_ERROR\n");
 				frameState = PkgState::CRC_PKG_ERROR;
 				memset(frameBuffer,0x00,BUFFER_SIZE);
+				error_data_count++;
+				putoutIndex = (putout-1+ROSCOMM_BUFFER_SIZE)%ROSCOMM_BUFFER_SIZE;
 			}
 
 			// complete pkg !
+			printf("PkgState::COMPLETE\n");
 			frameState = PkgState::COMPLETE;
-			decodeFun();
-			putout = (putout+sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header))%ROSCOMM_BUFFER_SIZE;
-			putoutIndex = putout;
+			decodeFun(CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG);
+			putout = (putout+sizeof(TwoCRC_SentryGimbalMsg))%ROSCOMM_BUFFER_SIZE;
+			putoutIndex = (putout-1+ROSCOMM_BUFFER_SIZE)%ROSCOMM_BUFFER_SIZE;
 			size -= sizeof(TwoCRC_SentryGimbalMsg);
 			break;
 	
@@ -390,12 +406,12 @@ Port::PkgState Port::putoutIndexFun()
 			//copy the payload
 			if( putout + sizeof(TwoCRC_GimbalMsg) - sizeof(Header) < ROSCOMM_BUFFER_SIZE )
 			{
-				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, sizeof(TwoCRC_GimbalMsg)-sizeof(Header));
+				memcpy(frameBuffer,RxBuff+putout, sizeof(TwoCRC_GimbalMsg));
 			} 
 			else
 			{
-				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, ROSCOMM_BUFFER_SIZE-putout);
-				memcpy(frameBuffer+(sizeof(Header)+ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_GimbalMsg)-sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
+				memcpy(frameBuffer,RxBuff+putout, ROSCOMM_BUFFER_SIZE-putout);
+				memcpy(frameBuffer+(ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_GimbalMsg)-(ROSCOMM_BUFFER_SIZE - putout));
 			}
 
 			crc_ok = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(TwoCRC_GimbalMsg));
@@ -408,9 +424,9 @@ Port::PkgState Port::putoutIndexFun()
 
 			// complete pkg !
 			frameState = PkgState::COMPLETE;
-			decodeFun();
-			putout = (putout+sizeof(TwoCRC_GimbalMsg)-sizeof(Header))%ROSCOMM_BUFFER_SIZE;
-			putoutIndex = putout;
+			decodeFun(CommunicationType::TWOCRC_GIMBAL_MSG);
+			putout = (putout+sizeof(TwoCRC_GimbalMsg))%ROSCOMM_BUFFER_SIZE;
+			putoutIndex = (putout-1+ROSCOMM_BUFFER_SIZE)%ROSCOMM_BUFFER_SIZE;
 			size -= sizeof(TwoCRC_GimbalMsg);
 			break;
 
@@ -421,21 +437,20 @@ Port::PkgState Port::putoutIndexFun()
 
 }
 
-void Port::decodeFun()
+void Port::decodeFun(int ID)
 {
-	//check the id
-	if(frameState != PkgState::COMPLETE)	return;
-
-	switch (frameBuffer[2])
+	decodeCount ++ ;
+	switch (ID)
 	{
 	case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-
 		transformVector.resize(sizeof(TwoCRC_SentryGimbalMsg));
+		memcpy(transformVector.data(),frameBuffer,sizeof(TwoCRC_SentryGimbalMsg));
 		twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transformVector);
 		break;
 
 	case CommunicationType::TWOCRC_GIMBAL_MSG :
 		transformVector.resize(sizeof(TwoCRC_GimbalMsg));
+		memcpy(transformVector.data(),frameBuffer,sizeof(TwoCRC_GimbalMsg));
 		twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transformVector);
 		break;
 
@@ -444,6 +459,7 @@ void Port::decodeFun()
 		break;
 
 	memset(frameBuffer,0x00,BUFFER_SIZE);
+	decodeCount ++ ;
 	}
 } 
 }//newSerialDriver

@@ -38,7 +38,6 @@ void printHexValues(const std::vector<uint8_t>& vec) {
     printf("\n");
 }
 
-
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
@@ -50,17 +49,23 @@ int main(int argc, char **argv)
     
     rm_serial_driver::TwoCRC_GimbalMsg&  twoCRC_GimbalMsg = port->getTwoCRC_GimbalMsg();
     rm_serial_driver::TwoCRC_SentryGimbalMsg& twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
+
     int& crcError_header  = port->geterrorHeader();
     int& crcError_data    = port->geterrorData();
     int& decodeCount      = port->getdecodeCount();
+    int& putin            = port->getputinIndex();
+    int& putout           = port->getputoutIndex();
+
+    port->readThread = std::thread(&newSerialDriver::Port::readFun, port);
+    port->decodeThread = std::thread(&newSerialDriver::Port::decodeThreadFun, port);
+
     auto start = high_resolution_clock::now();
     while(true)
     {
         twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
-
         auto stop =  high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
-
+        // sleep(1);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.dataLen);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.protocolID);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.crc_1);
@@ -77,10 +82,8 @@ int main(int argc, char **argv)
         // printf("two_sentry_gimbal 2: %f \n",twoCRC_SentryGimbalMsg.big_q_z);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.crc_3);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.crc_4);
-        printf("crc1:%d ,crc2:%d ,single: %d sum: %d,decode_rate :%f ,rate : %f, time: %f \n",crcError_header,crcError_data,single,sum,float(decodeCount)/double(duration.count())*1000000,float(crcError_data+crcError_header)/float(decodeCount),double(duration.count())/1000000);
-
-
-
+        printf("crc1:%d ,crc2:%d,putin: %d,putout:%d decode_rate :%f ,decode : %d, time: %f \n",
+        crcError_header,crcError_data,putin,putout,float(decodeCount)/double(duration.count())*1000000,decodeCount,double(duration.count())/1000000);
     }   
 
     rclcpp::spin(node);
