@@ -272,7 +272,7 @@ void Port::readFun()
 {	
 	while(true)
 	{
-		num_per_read = read(fd,readBuffer,64);
+		num_per_read = read(fd,readBuffer,64); // =(
 		if(num_per_read > 0) 
 		{
 			putinIndexFun(num_per_read);
@@ -490,3 +490,82 @@ void Port::decodeFun(int ID)
 	}
 } 
 }//newSerialDriver
+
+
+
+// //static void handle_rx(struct uart_port *port, unsigned int misr)
+// {
+// 	struct tty_struct *tty = port->state->port.tty;
+// 	int count = 0;
+
+// 	//从硬件读取当前FIFO中有多少数据
+// 	if (misr & UARTDM_ISR_RXSTALE_BMSK) {
+// 		count = msm_hsl_read(port,
+// 			regmap[vid][UARTDM_RX_TOTAL_SNAP]) -
+// 			msm_hsl_port->old_snap_state;
+// 		msm_hsl_port->old_snap_state = 0;
+// 	} else {
+// 		count = 4 * (msm_hsl_read(port, regmap[vid][UARTDM_RFWR]));
+// 		msm_hsl_port->old_snap_state += count;
+// 	}
+
+// 	/* and now the main RX loop */
+// 	while (count > 0) {
+// 		unsigned int c;
+// 		//循环将FIFO中的数据读取出来，放到驱动层的buf中
+// 		/* TODO: handle sysrq */
+// 		/* if (!uart_handle_sysrq_char(port, c)) */
+// 		tty_insert_flip_string(tty->port, (char *) &c,
+// 				       (count > 4) ? 4 : count);
+// 		count -= 4;
+// 	}	
+// 	//唤醒处理接收buf的工作队列
+// 	tty_flip_buffer_push(tty->port);
+// }
+
+// static ssize_t n_tty_read(struct tty_struct *tty, struct file *file,
+// 			 unsigned char __user *buf, size_t nr)
+// {
+// 	struct n_tty_data *ldata = tty->disc_data;
+// 	unsigned char __user *b = buf;
+// 	DECLARE_WAITQUEUE(wait, current);
+// 	int c;
+// 	int minimum, time;
+// 	ssize_t retval = 0;
+// 	long timeout;
+// 	unsigned long flags;
+// 	int packet;
+
+
+	// //根据termios.c_cc[VTIME]和termios.c_cc[VMIN]计算出单次读取操作的超时时间
+	// minimum = time = 0;
+	// timeout = MAX_SCHEDULE_TIMEOUT;
+	// if (!ldata->icanon) {
+	// 	minimum = MIN_CHAR(tty);
+	// 	if (minimum) {
+	// 		time = (HZ / 10) * TIME_CHAR(tty);
+	// 		if (time)
+	// 			ldata->minimum_to_wake = 1;
+	// 		else if (!waitqueue_active(&tty->read_wait) ||
+	// 			 (ldata->minimum_to_wake > minimum))
+	// 			ldata->minimum_to_wake = minimum;
+	// 	} else {
+	// 		timeout = (HZ / 10) * TIME_CHAR(tty);
+	// 		ldata->minimum_to_wake = minimum = 1;
+	// 	}
+	// }
+
+	// packet = tty->packet;
+	// //如果没有数据可读取，当前进程挂起，通过read_wait来唤醒
+	// add_wait_queue(&tty->read_wait, &wait);
+	// while (nr) {
+	// 	if (!input_available_p(tty, 0)) {
+	// 			//如果没有数据，则挂起进程
+	// 			timeout = schedule_timeout(timeout);
+	// 			continue;
+	// 	}
+	// 	//copy_from_read_buf：从n_tty_data数据结构中读取数据
+	// 		uncopied = copy_from_read_buf(tty, &b, &nr);
+	// }
+	// return retval;
+}
