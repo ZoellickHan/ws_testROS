@@ -105,9 +105,9 @@ private:
     bool isopen          = false;
 
     //rx thread
-    std::thread         readThread;
+    std::thread         readThread; 
     std::thread         decodeThread;
-
+    PkgState            frameState;
     // state data
     int rxsize              = 0;
     int putinIndex          = 0;
@@ -126,7 +126,8 @@ private:
     uint8_t readBuffer[BUFFER_SIZE];
     uint8_t RxBuff[ROSCOMM_BUFFER_SIZE];
     uint8_t TxBuff[ROSCOMM_BUFFER_SIZE];
-
+    uint8_t frameBuffer[BUFFER_SIZE];
+    
     rm_serial_driver::Header header;
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;

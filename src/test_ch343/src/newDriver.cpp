@@ -24,7 +24,6 @@ namespace newSerialDriver
 using namespace std;
 using namespace newSerialDriver;
 using namespace rm_serial_driver;
-
 using StopBit = newSerialDriver::SerialConfig::StopBit;
 using Parity  = newSerialDriver::SerialConfig::Parity;
 extern "C" int ioctl(int d, int request, ...);
@@ -269,10 +268,6 @@ bool Port::isPortOpen()
 Port::~Port(){}
 SerialConfig::~SerialConfig(){}
 
-void Port::decodeFun()
-{
-
-}  
 void Port::readFun()
 {	
 	while(true)
@@ -298,10 +293,157 @@ void Port::putinIndexFun(int size)
 	rxsize = (putinIndex - putoutIndex + ROSCOMM_BUFFER_SIZE) % ROSCOMM_BUFFER_SIZE;
 }
 
-
 Port::PkgState Port::putoutIndexFun()
 {
+	int size = rxsize;
+	int putout = putoutIndex;
+
+	while(size > 2)
+	{		
+		if(RxBuff[putout] == 0xAA)
+		{
+			break;
+		}
+		putout = (putout + 1)%ROSCOMM_BUFFER_SIZE;
+		size-- ;
+	}
+
+	// check the header size
+	if( size < sizeof(Header))
+	{
+		frameState = PkgState::HEADER_INCOMPLETE;
+		return PkgState::HEADER_INCOMPLETE;
+	}
+
+	// copy the header
+	if( putout + sizeof(Header) < ROSCOMM_BUFFER_SIZE )
+	{
+		memcpy(frameBuffer,RxBuff+putout,sizeof(Header));
+	}
+	else
+	{
+		memcpy(frameBuffer,RxBuff + putout, ROSCOMM_BUFFER_SIZE - putout);
+		memcpy(frameBuffer + (ROSCOMM_BUFFER_SIZE - putout),RxBuff,sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
+	}
+
+	putout += sizeof(Header); //update
+	crc_ok_header = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(Header));
+
+	if(!crc_ok_header)
+	{
+		frameState = PkgState::CRC_HEADER_ERRROR;
+		putout = (putout + sizeof(Header) -1 ) % ROSCOMM_BUFFER_SIZE;
+		size -= sizeof(Header);
+		putoutIndex = putout;
+	}
+
+	transformVector.resize(sizeof(Header));
+	memcpy(transformVector.data(),frameBuffer,sizeof(Header));
+	header = fromVector<Header>(transformVector);
+
+	// check the pay load 
+	switch (header.protocolID)
+	{
+		case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+
+			if(size < sizeof(TwoCRC_SentryGimbalMsg))
+			{
+				frameState = PkgState::PAYLOAD_INCOMPLETE;
+				return PkgState::PAYLOAD_INCOMPLETE;
+			}
+
+			//copy the payload
+			if( putout + sizeof(TwoCRC_SentryGimbalMsg) - sizeof(Header) < ROSCOMM_BUFFER_SIZE )
+			{
+				memcpy(frameBuffer+sizeof(Header),RxBuff + putout, sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header));
+			} 
+			else
+			{
+				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, ROSCOMM_BUFFER_SIZE - putout);
+				memcpy(frameBuffer+(sizeof(Header)+ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
+			}
+
+			crc_ok = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(TwoCRC_SentryGimbalMsg));
+
+			if(!crc_ok)
+			{
+				frameState = PkgState::CRC_PKG_ERROR;
+				memset(frameBuffer,0x00,BUFFER_SIZE);
+			}
+
+			// complete pkg !
+			frameState = PkgState::COMPLETE;
+			decodeFun();
+			putout = (putout+sizeof(TwoCRC_SentryGimbalMsg)-sizeof(Header))%ROSCOMM_BUFFER_SIZE;
+			putoutIndex = putout;
+			size -= sizeof(TwoCRC_SentryGimbalMsg);
+			break;
+	
+		case CommunicationType::TWOCRC_GIMBAL_MSG :
+
+			if(size < sizeof(TwoCRC_GimbalMsg))
+			{
+				frameState = PkgState::PAYLOAD_INCOMPLETE;
+				return PkgState::PAYLOAD_INCOMPLETE;
+			}
+
+			//copy the payload
+			if( putout + sizeof(TwoCRC_GimbalMsg) - sizeof(Header) < ROSCOMM_BUFFER_SIZE )
+			{
+				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, sizeof(TwoCRC_GimbalMsg)-sizeof(Header));
+			} 
+			else
+			{
+				memcpy(frameBuffer+sizeof(Header),RxBuff+putout, ROSCOMM_BUFFER_SIZE-putout);
+				memcpy(frameBuffer+(sizeof(Header)+ROSCOMM_BUFFER_SIZE-putout),RxBuff,sizeof(TwoCRC_GimbalMsg)-sizeof(Header)-(ROSCOMM_BUFFER_SIZE - putout));
+			}
+
+			crc_ok = crc16::Verify_CRC16_Check_Sum(frameBuffer,sizeof(TwoCRC_GimbalMsg));
+
+			if(!crc_ok)
+			{
+				frameState = PkgState::CRC_PKG_ERROR;
+				memset(frameBuffer,0x00,BUFFER_SIZE);
+			}
+
+			// complete pkg !
+			frameState = PkgState::COMPLETE;
+			decodeFun();
+			putout = (putout+sizeof(TwoCRC_GimbalMsg)-sizeof(Header))%ROSCOMM_BUFFER_SIZE;
+			putoutIndex = putout;
+			size -= sizeof(TwoCRC_GimbalMsg);
+			break;
+
+		default:
+			printf("Protocol is not defined \n");
+			break;
+	}
 
 }
 
+void Port::decodeFun()
+{
+	//check the id
+	if(frameState != PkgState::COMPLETE)	return;
+
+	switch (frameBuffer[2])
+	{
+	case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+
+		transformVector.resize(sizeof(TwoCRC_SentryGimbalMsg));
+		twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transformVector);
+		break;
+
+	case CommunicationType::TWOCRC_GIMBAL_MSG :
+		transformVector.resize(sizeof(TwoCRC_GimbalMsg));
+		twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transformVector);
+		break;
+
+	default:
+		printf("Protocol is not defined \n");
+		break;
+
+	memset(frameBuffer,0x00,BUFFER_SIZE);
+	}
+} 
 }//newSerialDriver
