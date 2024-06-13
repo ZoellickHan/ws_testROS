@@ -8,9 +8,10 @@
 using namespace std;
 using namespace newSerialDriver;
 using namespace rm_serial_driver;
-using namespace crc16;
 using namespace chrono;
 
+using StopBit = newSerialDriver::SerialConfig::StopBit;
+using Parity  = newSerialDriver::SerialConfig::Parity;
 shared_ptr<SerialConfig> config = make_shared<SerialConfig>(2000000,8,0,StopBit::TWO,Parity::NONE);
 shared_ptr<Port>         port   = make_shared<Port>(config);
 struct timespec ts1;
@@ -56,13 +57,6 @@ int main(int argc, char **argv)
     while(true)
     {
         twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
-
-
-        single = port->firstversion_receive();
-        if(single >0)
-            sum += single;
-        else    
-            port->reopen();
 
         auto stop =  high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);

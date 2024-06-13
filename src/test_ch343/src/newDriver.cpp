@@ -20,17 +20,21 @@
 
 namespace newSerialDriver
 {
-using namespace crc16;
+
 using namespace std;
 using namespace newSerialDriver;
 using namespace rm_serial_driver;
+
+using StopBit = newSerialDriver::SerialConfig::StopBit;
+using Parity  = newSerialDriver::SerialConfig::Parity;
 extern "C" int ioctl(int d, int request, ...);
 
 Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 {	
 	config = ptr;
 	memset(TxBuff, 0x00, ROSCOMM_BUFFER_SIZE);
-	memset(RxBuff ,0x00, ROSCOMM_BUFFER_SIZE);
+	memset(RxBuff, 0x00, ROSCOMM_BUFFER_SIZE);
+	memset(readBuffer, 0x00, BUFFER_SIZE);
 }
 
 /**
@@ -38,9 +42,10 @@ Port::Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr)
 */
 bool Port::init()
 {
-    memset(RxBuff,0x00,sizeof(RxBuff));
-    memset(TxBuff,0x00,sizeof(TxBuff));
-	transform.reserve(DANGEROUS);
+    memset(RxBuff,0x00,ROSCOMM_BUFFER_SIZE);
+    memset(TxBuff,0x00,ROSCOMM_BUFFER_SIZE);
+	memset(readBuffer,0x00,BUFFER_SIZE);
+	transformVector.reserve(BUFFER_SIZE);
 
     // init port 
     struct termios newtio;
@@ -201,108 +206,6 @@ int Port::openPort()
 	return fd;
 }
 
-int Port::firstversion_receive()
-{
-	//reset the buffer
-	memcpy(RxBuff,RxBuff+putoutIndex,putinIndex-putoutIndex);
-	putinIndex = putinIndex - putoutIndex;
-	putoutIndex = 0;
-	memset(RxBuff+putinIndex,0x00,DANGEROUS);
-
-	printf("putin index1: %d \n",putinIndex);
-	printf("putout index1: %d \n",putoutIndex);
-
-	num_per_read = read(fd,RxBuff+putinIndex,1024);
-	if(num_per_read != 64) printf("!!!!!!!!!!! num_per_read :%d \n",num_per_read);
-	if(num_per_read >= 0)
-	{	
-		putinIndex += num_per_read;
-		// if receiver lass than a header. then decode next time.
-		if(putinIndex - putoutIndex < sizeof(Header)){return num_per_read;}
-
-		int i=0;
-		while (i < num_per_read )
-		{
-			if(RxBuff[i+putoutIndex] == 0xAA)
-			{	
-				putoutIndex += i; // update the putout when searching.
-				transform.resize(sizeof(Header));
-				crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
-				if(crc_ok_header)
-				{
-					memcpy(transform.data(),RxBuff+i,sizeof(header));
-					header = fromVector<Header>(transform);
-					switch (header.protocolID)
-					{
-					case CommunicationType::TWOCRC_CHASSIS_MSG :
-						/*not define*/
-						i++;
-						break;
-					case CommunicationType::TWOCRC_FIELD_MSG :
-						/*not define*/
-						i++;
-						break;
-					case CommunicationType::TWOCRC_GIMBAL_MSG :
-						if(putinIndex - putoutIndex < sizeof(TwoCRC_GimbalMsg)){break;}
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_GimbalMsg));
-						if(crc_ok)
-						{
-							transform.resize(sizeof(TwoCRC_GimbalMsg));
-							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_GimbalMsg));
-							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
-							decodeCount++;
-						}
-						else
-						{
-							error_data_count ++;
-						}
-						i+=sizeof(TwoCRC_GimbalMsg);
-						putoutIndex += sizeof(TwoCRC_GimbalMsg);
-						break;
-
-					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-						if(putinIndex - putoutIndex < sizeof(TwoCRC_SentryGimbalMsg)){break;}
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
-						if(crc_ok)
-						{
-							transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
-							memcpy(transform.data(),RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
-							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
-							decodeCount++;
-						}
-						else
-						{
-							error_data_count ++;
-						}
-						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);	
-						i+=sizeof(TwoCRC_SentryGimbalMsg);				
-						break;
-					default:
-						i++;
-						break;
-					}
-				}
-				else
-				{
-					error_header_count++;
-					i += sizeof(Header);
-				} // if(crc_ok_header)
-			}
-			else
-			{
-				i++;
-				continue;
-			}
-		} //while
-		printf("putin index2: %d \n",putinIndex);
-		printf("putout index2: %d \n",putoutIndex);
- 		printf("run out\n");
-		return num_per_read;
-	}else{
-		return -1;
-	}
-}
-
 /**
  *  Transmit the data
 */
@@ -365,5 +268,40 @@ bool Port::isPortOpen()
 
 Port::~Port(){}
 SerialConfig::~SerialConfig(){}
+
+void Port::decodeFun()
+{
+
+}  
+void Port::readFun()
+{	
+	while(true)
+	{
+		num_per_read = read(fd,readBuffer,BUFFER_SIZE);
+		putinIndexFun(num_per_read);
+	}
+}
+
+void Port::putinIndexFun(int size)
+{
+	if( putinIndex + size > ROSCOMM_BUFFER_SIZE)
+	{
+		memcpy(RxBuff+putinIndex, readBuffer, ROSCOMM_BUFFER_SIZE-putinIndex);
+		memcpy(RxBuff, readBuffer+(ROSCOMM_BUFFER_SIZE-putinIndex), size - (ROSCOMM_BUFFER_SIZE-putinIndex));
+		putinIndex = (putinIndex + size) % ROSCOMM_BUFFER_SIZE;
+	}
+	else
+	{
+		memcpy(RxBuff+putinIndex,readBuffer,size);
+		putinIndex += size;
+	}
+	rxsize = (putinIndex - putoutIndex + ROSCOMM_BUFFER_SIZE) % ROSCOMM_BUFFER_SIZE;
+}
+
+
+Port::PkgState Port::putoutIndexFun()
+{
+
+}
 
 }//newSerialDriver

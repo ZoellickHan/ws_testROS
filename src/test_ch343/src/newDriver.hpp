@@ -18,24 +18,24 @@ namespace newSerialDriver
 {
 class  SerialConfig
 {  
-
-enum StopBit : uint8_t
-{
-    ONE = 0,
-    ONE_POINT_FIVE,
-    TWO
-};
-
-enum Parity : uint8_t
-{
-    NONE = 0,
-    ODD,
-    EVEN,
-    MARK,
-    SPACE
-};
-
 public: 
+
+    enum StopBit : uint8_t
+    {
+        ONE = 0,
+        ONE_POINT_FIVE,
+        TWO
+    };
+
+    enum Parity : uint8_t
+    {
+        NONE = 0,
+        ODD,
+        EVEN,
+        MARK,
+        SPACE
+    };
+
     SerialConfig() = delete;
     SerialConfig(int bps, int databit, bool flow, StopBit stopbits, Parity paritys)
     {
@@ -56,17 +56,16 @@ public:
 
 class Port
 {
-
-enum PkgState : uint8_t
-{
-    COMPLETE = 0,
-    HEADER_INCOMPLETE,
-    PAYLOAD_INCOMPLETE,
-    CRC_HEADER_ERRROR,
-    CRC_PKG_ERROR,
-};
-
 public:
+
+    enum PkgState : uint8_t
+    {
+        COMPLETE = 0,
+        HEADER_INCOMPLETE,
+        PAYLOAD_INCOMPLETE,
+        CRC_HEADER_ERRROR,
+        CRC_PKG_ERROR,
+    };
 
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
@@ -83,8 +82,9 @@ public:
     int  transmit(std::vector<uint8_t> & buff); 
     void decodeFun();  
     void readFun();
-    void putinIndexFun();
+    void putinIndexFun(int size);
     PkgState putoutIndexFun();
+    void decodeFun();
     
     // data and debug function
     int& geterrorHeader(){return error_header_count;}
@@ -103,6 +103,10 @@ private:
 
     bool isinit          = false;
     bool isopen          = false;
+
+    //rx thread
+    std::thread         readThread;
+    std::thread         decodeThread;
 
     // state data
     int rxsize              = 0;
