@@ -70,6 +70,7 @@ public:
     bool isPortOpen();
     int& geterrorHeader(){return error_header_count ;}
     int& geterrorData(){return error_data_count;}
+    
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
     rm_serial_driver::GimbalMsg& getGimbalMsg(){return gimbalMsg;}

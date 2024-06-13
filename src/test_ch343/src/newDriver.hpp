@@ -12,8 +12,7 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
-#define DANGEROUS 512
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 512
 
 namespace rm_serial_driver
 {
@@ -23,14 +22,14 @@ namespace newSerialDriver
 class  SerialConfig
 {  
 public: 
-    enum class StopBit
+    enum StopBit : uint8_t
     {
         ONE,
         ONE_POINT_FIVE,
         TWO
     };
 
-    enum class Parity
+    enum Parity : uint8_t
     {
         NONE,
         ODD,
@@ -60,12 +59,13 @@ public:
 class Port
 {
 public:
-    enum class CRCstate : uint8_t
-    {
-        CRC_OK = 0,
-        CRC_ERROR_HEADER = 1,
-        CRC_ERROR_DATA = 2,
-    };
+
+enum CRCstate : uint8_t
+{
+    CRC_OK = 0,
+    CRC_ERROR_HEADER = 1,
+    CRC_ERROR_DATA = 2,
+};
 
     Port(std::shared_ptr<newSerialDriver::SerialConfig> ptr);
     ~Port();
@@ -80,8 +80,10 @@ public:
     //VERSIOM THREE
     void  receive();
     void  putinIndexHandle(int size);
-    void  decodeHandle();
-    void  testingMCU();
+    void  jumpHandle(int length1, int length2);
+    void  putoutIndexHandle();
+    bool  decodeHandle(int ID);
+    // void  testingMCU();
     
     bool isPortInit();
     bool isPortOpen();
@@ -96,7 +98,6 @@ public:
 
     std::thread receiveThread;
     std::thread decodeThread;
-    std::thread testingThread;
 
     rm_serial_driver::TwoCRC_GimbalMsg& getTwoCRC_GimbalMsg(){return twoCRC_GimbalMsg;}
     rm_serial_driver::TwoCRC_SentryGimbalMsg& getTwoCRC_SentryGimbalMsg(){return twoCRC_SentryGimbalMsg;} 
@@ -115,14 +116,19 @@ private:
     int decodeCount         = 0;
     int putinIndex          = 0;
     int putoutIndex         = 0;
-    bool crc_ok_header   = false;
-    bool crc_ok          = false;
-    bool isinit          = false;
-    bool isopen          = false;   
+    bool ifdecode           = false;
+    bool crc_ok_header      = false;
+    bool crc_ok             = false;
+    bool isinit             = false;
+    bool isopen             = false;   
 
-    uint8_t RxBuff[2*ROSCOMM_BUFFER_SIZE];
-    uint8_t TxBuff[2*ROSCOMM_BUFFER_SIZE];
-    uint8_t Buffer[BUFFER_SIZE];
+    uint8_t ReadBuffer[BUFFER_SIZE];
+    uint8_t decodeBuffer[BUFFER_SIZE];
+    uint8_t RxBuff[ROSCOMM_BUFFER_SIZE];
+    uint8_t TxBuff[ROSCOMM_BUFFER_SIZE];
+    uint8_t jumpBuff[ROSCOMM_BUFFER_SIZE];
+    
+
     CRCstate currentCRC = CRCstate::CRC_OK;
     std::vector<uint8_t> transform;
     rm_serial_driver::Header header;

@@ -12,6 +12,11 @@
 #include <getopt.h>
 #include <linux/serial.h>
 
+#include <time.h>
+#include <chrono>
+#include <iostream>
+#include <thread>
+
 #define termios asmtermios
 #include <asm/termios.h>
 #undef termios
@@ -40,7 +45,7 @@ bool Port::init()
 {
     memset(RxBuff,0x00,sizeof(RxBuff));
     memset(TxBuff,0x00,sizeof(TxBuff));
-	transform.reserve(DANGEROUS);
+	transform.reserve(512);
 
     // init port 
     struct termios newtio;
@@ -209,104 +214,188 @@ void Port::receive()
 {
 	while(true)
 	{
-		num_per_read = read(fd,Buffer,BUFFER_SIZE);
+		num_per_read = read(fd,ReadBuffer,BUFFER_SIZE);
 		if(num_per_read>=0)	this->putinIndexHandle(num_per_read);
 	}
 }
 
 void Port::putinIndexHandle(int size)
 {	
-	while(true)
+	if( putinIndex + size > ROSCOMM_BUFFER_SIZE)
 	{
-		memcpy(RxBuff+putinIndex,Buffer,size);
+		memcpy(RxBuff+putinIndex,ReadBuffer,putinIndex+size-ROSCOMM_BUFFER_SIZE);
+		memcpy(RxBuff,ReadBuffer+putinIndex+size-ROSCOMM_BUFFER_SIZE,(putinIndex+size)%ROSCOMM_BUFFER_SIZE);
+		putinIndex = (putinIndex + size)%ROSCOMM_BUFFER_SIZE;
+	}
+	else
+	{
+		memcpy(RxBuff+putinIndex,ReadBuffer,size);
 		putinIndex += size; 
 		putinIndex = putinIndex%ROSCOMM_BUFFER_SIZE;
-	}
+	}	
 }
 
-/**
- * use a thread to start receive funcation
- * e.g. std::thread receiverThread(&newSerialDriver::Port::decodeHandle(),port)
- */
-void Port::decodeHandle()
-{
-	while(true){
-	while(putoutIndex < putinIndex)
+void Port::jumpHandle(int length1,int length2)
+{	
+	// printf("boji jump jump jump\n");
+	//start the jump buffer !
+
+	memcpy(jumpBuff,RxBuff+putoutIndex +1 ,length1);
+	memcpy(jumpBuff+length1,RxBuff,length2);
+
+	for(int i = 0; i< length1+length2; i++)
 	{
-		printf("boji unhappy \n");
-		if(putinIndex - putinIndex < sizeof(Header)) continue;
-		
-		if(RxBuff[putoutIndex] == 0xAA)
-		{
-			crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(Header));
+		if(jumpBuff[i] == 0xAA)
+		{	
+			if(i + sizeof(Header) >= length1 + length2 ) break;
+			crc_ok_header = crc16::Verify_CRC16_Check_Sum(jumpBuff+i,sizeof(Header));
 			if(crc_ok_header)
 			{
 				transform.resize(sizeof(Header));
-				memcpy(transform.data(),RxBuff+putoutIndex,sizeof(Header));
+				memcpy(transform.data(),jumpBuff+i,sizeof(Header));
 				header = fromVector<Header>(transform);
-				currentCRC = CRCstate::CRC_OK;
 				switch (header.protocolID)
 				{
-					case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
-						if(putoutIndex - putinIndex <int(sizeof(TwoCRC_SentryGimbalMsg))) continue;
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
-						if(crc_ok)
-						{
-							transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
-							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_SentryGimbalMsg));
-							twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
-							decodeCount++;
-							currentCRC = CRCstate::CRC_OK;
-						}
-						else
-						{
-							currentCRC = CRCstate::CRC_ERROR_DATA;
-							error_data_count ++;
-						}
-						putoutIndex += sizeof(TwoCRC_SentryGimbalMsg);
-						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
-						break;
-					case CommunicationType::TWOCRC_GIMBAL_MSG :
-						if(putoutIndex - putinIndex < int(sizeof(TwoCRC_GimbalMsg))) continue;
-						crc_ok = crc16::Verify_CRC16_Check_Sum(RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
-						if(crc_ok)
-						{
-							transform.resize(sizeof(TwoCRC_GimbalMsg));
-							memcpy(transform.data(),RxBuff+putoutIndex,sizeof(TwoCRC_GimbalMsg));
-							twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
-							decodeCount++;
-							currentCRC = CRCstate::CRC_OK;
-						}
-						else
-						{
-							currentCRC = CRCstate::CRC_ERROR_DATA;
-							error_data_count ++;
-						}
-						putoutIndex += sizeof(TwoCRC_GimbalMsg);
-						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
-						break;
+				case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+					if(i + sizeof(TwoCRC_SentryGimbalMsg) >= length1+length2) return;
+					memcpy(decodeBuffer,jumpBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+					ifdecode = decodeHandle(CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG);
+					i += sizeof(TwoCRC_SentryGimbalMsg);
+					break;
 
-					default:
-						putoutIndex += sizeof(Header);
-						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
-						break;
+				case CommunicationType::TWOCRC_GIMBAL_MSG :
+					if(i + sizeof(TwoCRC_GimbalMsg) >= length1+length2) return;
+					memcpy(decodeBuffer,jumpBuff+i,sizeof(TwoCRC_GimbalMsg));
+					ifdecode = decodeHandle(CommunicationType::TWOCRC_GIMBAL_MSG);
+					i += sizeof(TwoCRC_GimbalMsg);
+					break;
+	
+				default:
+					printf("protocol has not been defined yet!!! \n");
+					break;
 				}
 			}
 			else
 			{
-				currentCRC = CRCstate::CRC_ERROR_HEADER;
-				error_header_count ++;
-				putoutIndex += sizeof(Header);
-				putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
-			}// if crc_ok_header 
+				i += sizeof(header);
+			}
+		}
+	}
+	// printf("boji jump out !\n");
+	putoutIndex = length2 -1 ;
+	memset(jumpBuff,0x00,sizeof(jumpBuff));
+}
+
+void Port::putoutIndexHandle()
+{
+	while(true)
+	{
+		if(putoutIndex < putinIndex)
+		{
+			for(int i = putoutIndex; i < putinIndex; i++)
+			{
+				if(RxBuff[i] == 0xAA)
+				{
+					if(i+sizeof(Header)-1 >= putinIndex) continue;
+					crc_ok_header = crc16::Verify_CRC16_Check_Sum(RxBuff+i,sizeof(Header));
+					if(crc_ok_header)
+					{
+						transform.resize(sizeof(Header));
+						memcpy(transform.data(),RxBuff+i,sizeof(Header));
+						header = fromVector<Header>(transform);
+						// printf("id: %d \n",header.protocolID);
+						switch (header.protocolID)
+						{
+						case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+							if(i+sizeof(TwoCRC_SentryGimbalMsg)-1 >= putinIndex) continue;
+							memcpy(decodeBuffer,RxBuff+i,sizeof(TwoCRC_SentryGimbalMsg));
+							ifdecode = decodeHandle(CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG);
+							i += sizeof(TwoCRC_SentryGimbalMsg);
+							putoutIndex = i - 1;
+							putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+							break;
+						
+						case CommunicationType::TWOCRC_GIMBAL_MSG :
+							if(i+sizeof(TwoCRC_GimbalCommand)-1 >= putinIndex) continue;
+							memcpy(decodeBuffer,RxBuff+i,sizeof(TwoCRC_GimbalMsg));
+							ifdecode = decodeHandle(CommunicationType::TWOCRC_GIMBAL_MSG);
+							i += sizeof(TwoCRC_GimbalMsg);
+							putoutIndex = i - 1;
+							putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+							break;
+
+ 						default:
+							printf("protocol has not been defined yet.\n");
+							continue;
+							break;
+						}
+					}
+					else
+					{
+						error_header_count ++;
+						i += sizeof(header);
+						putoutIndex = i -1 ;
+						putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
+					}
+				}
+				else
+				{
+					i++;
+				}
+			}
 		}
 		else
 		{
-			putoutIndex ++;
-			putoutIndex = putoutIndex % ROSCOMM_BUFFER_SIZE;
-		}// if RxBuffer[i] == 0xAA
-	}// while(putoutIndex < putinIndex)
-	}//while true
+			jumpHandle(ROSCOMM_BUFFER_SIZE - putoutIndex - 1, putinIndex);
+		}
+	}
+}
+
+
+bool Port::decodeHandle(int ID)
+{
+	switch (ID)
+	{
+	case CommunicationType::TWOCRC_SENTRY_GIMBAL_MSG :
+
+		crc_ok = crc16::Verify_CRC16_Check_Sum(decodeBuffer,sizeof(TwoCRC_SentryGimbalMsg));
+		if(crc_ok)
+		{
+			transform.resize(sizeof(TwoCRC_SentryGimbalMsg));
+			memcpy(transform.data(),decodeBuffer,sizeof(TwoCRC_SentryGimbalMsg));
+			twoCRC_SentryGimbalMsg = fromVector<TwoCRC_SentryGimbalMsg>(transform);
+			decodeCount ++;
+			return true;
+		}
+		else
+		{
+			error_data_count++;
+			return false;
+		}
+		break;
+
+	case CommunicationType::TWOCRC_GIMBAL_MSG :
+		crc_ok = crc16::Verify_CRC16_Check_Sum(decodeBuffer,sizeof(TwoCRC_GimbalMsg));
+		if(crc_ok)
+		{
+			transform.resize(sizeof(TwoCRC_GimbalMsg));
+			memcpy(transform.data(),decodeBuffer,sizeof(TwoCRC_GimbalMsg));
+			twoCRC_GimbalMsg = fromVector<TwoCRC_GimbalMsg>(transform);
+			decodeCount ++;
+			return true;
+		}
+		else
+		{
+			error_data_count++;
+			return false;
+		}
+		break;
+	
+	default:
+		return false;
+		break;
+	}
+	memset(decodeBuffer,0x00,sizeof(decodeBuffer));
 }
 /**
  *  Transmit the data

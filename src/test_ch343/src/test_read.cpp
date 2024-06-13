@@ -33,20 +33,23 @@ int main(int argc, char **argv)
     long&   sum           = port->getsum();
     int&    putinIndex    = port->getputinIndex();
     int&    putoutIndex   = port->getputoutIndex();
-    auto    start            = high_resolution_clock::now();
+    auto    start         = high_resolution_clock::now();
 
     port->receiveThread = std::thread(&Port::receive,port);
-    port->decodeThread  = std::thread(&Port::decodeHandle,port);
-    
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    port->decodeThread  = std::thread(&Port::putoutIndexHandle,port);
+
+    // int n = 0;
     while(true)
     {
+        sleep(1);
         auto stop =  high_resolution_clock::now();
         auto duration = duration_cast<microseconds>(stop - start);
 
         printf("[sum: %ld, crc1: %d, crc2: %d, putin: %d, putout: %d, decode: %d] \n"
         ,sum,crcError_header,crcError_data,putinIndex,putoutIndex,decodeCount);
-        // printf("single :%d, sum: %d, decodeRate: %f, time: %f \n",single,sum,float(decodenum)/double(duration.count())*1000000.0,double(duration.count())/1000000.0);
-        
+
+        printf("decodeRate: %f, time: %f \n",float(decodeCount)/(double(duration.count())/1000000.0),(double(duration.count())/1000000.0));
 
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.dataLen);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.protocolID);
