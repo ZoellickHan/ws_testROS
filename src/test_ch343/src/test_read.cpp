@@ -57,15 +57,15 @@ int main(int argc, char **argv)
     int& putout           = port->getputoutIndex();
 
     port->readThread = std::thread(&newSerialDriver::Port::readFun, port);
-    port->decodeThread = std::thread(&newSerialDriver::Port::decodeThreadFun, port);
+    // port->decodeThread = std::thread(&newSerialDriver::Port::decodeThreadFun, port);
 
     auto start = high_resolution_clock::now();
     while(true)
     {
         twoCRC_SentryGimbalMsg = port->getTwoCRC_SentryGimbalMsg();
         auto stop =  high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        // sleep(1);
+        auto duration = duration_cast<microseconds>(stop-start);
+        sleep(1);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.dataLen);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.protocolID);
         // printf("two_sentry_gimbal 2: %d \n",twoCRC_SentryGimbalMsg.header.crc_1);

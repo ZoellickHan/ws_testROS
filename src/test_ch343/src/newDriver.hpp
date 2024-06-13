@@ -13,7 +13,7 @@
 #include "crc.hpp" 
 
 #define ROSCOMM_BUFFER_SIZE 2048
-#define BUFFER_SIZE 512
+#define BUFFER_SIZE 2048
 namespace newSerialDriver
 {
 class  SerialConfig
@@ -114,8 +114,8 @@ private:
     PkgState            frameState;
     // state data
     int rxsize              = 0;
-    int putinIndex          = 0;
-    int putoutIndex         = 0;
+    int putinIndex          = -1;
+    int putoutIndex         = -1;
     int decodeCount         = 0;
     int error_header_count  = 0;
     int error_data_count    = 0;
