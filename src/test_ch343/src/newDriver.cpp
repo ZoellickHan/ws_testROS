@@ -489,6 +489,7 @@ void Port::decodeFun(int ID)
 	decodeCount ++ ;
 	}
 } 
+
 }//newSerialDriver
 
 
@@ -568,4 +569,4 @@ void Port::decodeFun(int ID)
 	// 		uncopied = copy_from_read_buf(tty, &b, &nr);
 	// }
 	// return retval;
-}
+// }

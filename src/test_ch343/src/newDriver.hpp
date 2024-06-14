@@ -12,6 +12,19 @@
 #include "protocol.hpp"
 #include "crc.hpp" 
 
+#include "tty.h"
+#include <linux/device.h>
+#include <linux/module.h>
+#include <linux/of.h>
+#include <linux/platform_device.h>
+#include <linux/pm_runtime.h>
+#include <linux/pnp.h>
+#include <linux/property.h>
+#include <linux/serial_core.h>
+#include <linux/spinlock.h>
+
+#include "serial_base.h"
+
 #define ROSCOMM_BUFFER_SIZE 2048
 #define BUFFER_SIZE 2048
 namespace newSerialDriver
@@ -78,6 +91,8 @@ public:
     bool isPortInit();
     bool isPortOpen();
 
+    int specialread();
+
     // rx tx function
     int  transmit(std::vector<uint8_t> & buff);  
     void readFun();
@@ -136,5 +151,61 @@ private:
     rm_serial_driver::TwoCRC_GimbalMsg twoCRC_GimbalMsg;
     rm_serial_driver::TwoCRC_SentryGimbalMsg twoCRC_SentryGimbalMsg;
 };
+
+class ttyPort
+{
+    public:
+    private:
+
+        struct uart_driver;
+
+
+};
+
+uart_register_driver()
+
+// 
+//为uart_driver->state, 每个端口需要一个state
+drv->state = kzalloc(sizeof(struct uart_state) * drv->nr, GFP_KERNEL);
+if (!drv->state)
+	goto out;
+//创建一个tty_driver数据结构，并为各个端口分配资源
+normal = alloc_tty_driver(drv->nr);
+if (!normal)
+	goto out_kfree;
+//uart_driver中的tty_driver指向新创建的tty_driver，方便其他代码根据uart_driver查找tty_driver 
+drv->tty_driver = normal;
+//一系统的参数初始化
+normal->driver_name	= drv->driver_name;
+normal->name		= drv->dev_name;
+normal->major		= drv->major;
+normal->minor_start	= drv->minor;
+normal->type		= TTY_DRIVER_TYPE_SERIAL;
+normal->subtype		= SERIAL_TYPE_NORMAL;
+normal->init_termios	= tty_std_termios;
+normal->init_termios.c_cflag = B9600 | CS8 | CREAD | HUPCL | CLOCAL;
+normal->init_termios.c_ispeed = normal->init_termios.c_ospeed = 9600;
+normal->flags		= TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV;
+normal->driver_state    = drv;
+//设置tty_driver的ops，uart_ops由kernel核心代码提供
+tty_set_operations(normal, &uart_ops);
+
+/*
+ * Initialise the UART state(s).
+ */
+for (i = 0; i < drv->nr; i++) {
+	struct uart_state *state = drv->state + i;
+	struct tty_port *port = &state->port;
+	//初始化每个tty端口，核心部分是tty_buffer_init
+	tty_port_init(port);
+	port->ops = &uart_port_ops;
+	port->close_delay     = HZ / 2;	/* .5 seconds */
+	port->closing_wait    = 30 * HZ;/* 30 seconds */
+}
+//注册tty_driver
+retval = tty_register_driver(normal);
+if (retval >= 0)
+	return retval;
+
 
 }//newSerialDriver
