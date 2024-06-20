@@ -1,7 +1,0 @@
-[01m[K/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343/src/newDriver.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Ktest_ch343/newDriver.hpp: No such file or directory
-    1 | #include [01;31m[K"test_ch343/newDriver.hpp"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-gmake[2]: *** [CMakeFiles/test_ch343.dir/build.make:90: CMakeFiles/test_ch343.dir/src/newDriver.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/test_ch343.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

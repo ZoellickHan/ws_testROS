@@ -1,9 +1,0 @@
-[31mCMake Error at CMakeLists.txt:29 (add_executable):
-  add_executable cannot create target "test_ch343" because another target
-  with the same name already exists.  The existing target is an executable
-  created in source directory
-  "/home/zoellickhan/Code/2024CV/ws_testROS/src/test_ch343".  See
-  documentation for policy CMP0002 for more details.
-
-[0m
-gmake: *** [Makefile:267: cmake_check_build_system] Error 1
